@@ -22,7 +22,7 @@
 <meta property="og:image" content="http://blueskyawen.com/images/push-msg1.png">
 <meta property="og:image" content="http://blueskyawen.com/images/push-msg2.png">
 <meta property="og:image" content="http://blueskyawen.com/images/service-workers.jpg">
-<meta property="og:updated_time" content="2019-02-21T14:42:08.255Z">
+<meta property="og:updated_time" content="2019-02-21T16:10:24.039Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PWA与angular的Service Worker">
 <meta name="twitter:description" content="PWA是什么PWA，全称Progressive Web Apps，是一种接近原生用户体验的渐进增强的 Web 应用，利用现代浏览器特性从安全、性能和体验三个方面，优化我们的Web AppPWA不是某一项技术,而是一系列Web技术与标准的集合与应用,由Google在2015年提出，旨在渐进增强，不是替代现有的移动App，而是让web应用有媲美原生应用的体验，更加对移动环境友好   应用场景PWA主要">
@@ -303,6 +303,7 @@
 <p><img src="/images/push-msg1.png" alt="push msg1">   </p>
 <p><img src="/images/push-msg2.png" alt="push msg2"> </p>
 <p>通过消息推送API能实现跟原生APP一样消息的体验，但是，国内的PWA应用还不支持这种即时推送，在国外像Facebook、Twitter就做的非常好。  </p>
+<p><strong>2. Notification</strong><br>Notification通知的功能与消息push类似，但更为简单，只要设置好通知消息，调用sw的相同通知接口即可，甚至可以可以带操作，但目前浏览器的支持并不好，火狐支持部分功能，不支持操作action<br>可以试用<a href="https://github.com/blueskyawen/book-pwa-demo" target="_blank" rel="noopener">图书搜索demo</a>，通过页面按钮添加提醒通知<br>Notification api可以单独使用，也可以和push一块使用，两者虽然相似，并不矛盾</p>
 <h4 id="APP-Shell"><a href="#APP-Shell" class="headerlink" title="APP Shell"></a>APP Shell</h4><p>App Shell架构是构建 PWA 应用的一种方式，它通常提供了一个最基本的 Web App 框架，包括应用的头部、底部、菜单栏等结构<br>顾名思义，我们可以把它理解成应用的一个「空壳」，这个「空壳」仅包含页面框架所需的最基本的 HTML 片段，CSS 和 javaScript，这样一来，用户重复打开应用时就能迅速地看到 Web App 的基本界面，只需要从网络中请求、加载必要的内容。<br>我们使用 Service Worker 对 App Shell 做离线缓存，以便它可以在离线时正常展现，达到类似 Native App 的体验。<br>开发一个 App Shell, 我们通常要注意以下几点：</p>
 <ul>
 <li>将动态内容与 Shell 分离</li>
@@ -319,7 +320,7 @@
 </ul>
 <p>虽然在国内知名网站和APP已经陆续有了PWA版本，但是根据个人的使用来讲，真正的PWA应用很少，大部分也只是实现了部分的PWA技术，比如service worker,大家在访问一些网站是可以在开发者工具看到一些运行中的service worker  </p>
 <p><img src="/images/service-workers.jpg" alt="service workers">  </p>
-<p>但是,只有service worker,没有支持Manifest,消息推送通知等其他技术;目前支持最好最全的应该是<a href="https://m.weibo.cn/beta?pwa=1" target="_blank" rel="noopener">新浪微博</a><br>总之，在国内的发展仍然挑战很大             </p>
+<p>但是,只有service worker,没有支持Manifest,消息推送通知等，而且大部分浏览器对即时通知等技术的支持并不好<br>目前支持最好最全的应该是<a href="https://m.weibo.cn/beta?pwa=1" target="_blank" rel="noopener">新浪微博</a>，总之，在国内的发展仍然挑战很大             </p>
 <h3 id="应用体验"><a href="#应用体验" class="headerlink" title="应用体验"></a>应用体验</h3><pre><code>- 手机登录 https://pwa.rocks/，这个网址有很多pwa应用
 - 国内大厂的APP：阿里巴巴 http://m.alibaba.com，新浪微博 https://m.weibo.cn/beta?pwa=1
 </code></pre><h3 id="PWA的实现"><a href="#PWA的实现" class="headerlink" title="PWA的实现"></a>PWA的实现</h3><p>实现 PWA 所需要的特性，主要是围绕着 Service Workers 的基于事件的 cache 系统和消息推送的一套新的 API，此外还需要定义 manifest.json 来定义安装行为或是样式等</p>
@@ -638,11 +639,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">写作</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">写作</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -686,11 +687,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">angular，plugin</a>
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+                <a href="javascript:void(0)" class="js-tag color5">angular，plugin</a>
               </li>
              
               <li class="article-tag-list-item">
