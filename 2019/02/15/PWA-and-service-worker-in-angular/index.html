@@ -6,15 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://blueskyawen.com">
-  <title>PWA与angular的Service Worker | bluesky个人小站</title>
+  <title>PWA与angular中的Service Worker | bluesky个人小站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="PWA是什么PWA，全称Progressive Web Apps，是一种接近原生用户体验的渐进增强的 Web 应用，利用现代浏览器特性从安全、性能和体验三个方面，优化我们的Web AppPWA不是某一项技术,而是一系列Web技术与标准的集合与应用,由Google在2015年提出，旨在渐进增强，不是替代现有的移动App，而是让web应用有媲美原生应用的体验，更加对移动环境友好   应用场景PWA主要">
+  <meta name="description" content="PWA是什么PWA，全称Progressive Web Apps，是一种接近原生用户体验的渐进增强的 Web 应用，利用现代浏览器特性从安全、性能和体验三个方面，优化我们的Web AppPWA不是某一项技术,而是一系列Web技术与标准的集合与应用,由Google在2015年提出，旨在渐进增强，不是替代现有的移动App，而是让web应用有媲美原生应用的体验，更加对移动环境友好">
 <meta name="keywords" content="angular">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PWA与angular的Service Worker">
+<meta property="og:title" content="PWA与angular中的Service Worker">
 <meta property="og:url" content="http://blueskyawen.com/2019/02/15/PWA-and-service-worker-in-angular/index.html">
 <meta property="og:site_name" content="bluesky个人小站">
-<meta property="og:description" content="PWA是什么PWA，全称Progressive Web Apps，是一种接近原生用户体验的渐进增强的 Web 应用，利用现代浏览器特性从安全、性能和体验三个方面，优化我们的Web AppPWA不是某一项技术,而是一系列Web技术与标准的集合与应用,由Google在2015年提出，旨在渐进增强，不是替代现有的移动App，而是让web应用有媲美原生应用的体验，更加对移动环境友好   应用场景PWA主要">
+<meta property="og:description" content="PWA是什么PWA，全称Progressive Web Apps，是一种接近原生用户体验的渐进增强的 Web 应用，利用现代浏览器特性从安全、性能和体验三个方面，优化我们的Web AppPWA不是某一项技术,而是一系列Web技术与标准的集合与应用,由Google在2015年提出，旨在渐进增强，不是替代现有的移动App，而是让web应用有媲美原生应用的体验，更加对移动环境友好">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blueskyawen.com/images/service-worker2.png">
 <meta property="og:image" content="http://blueskyawen.com/images/push-service2.png">
@@ -23,10 +23,10 @@
 <meta property="og:image" content="http://blueskyawen.com/images/push-msg2.png">
 <meta property="og:image" content="http://blueskyawen.com/images/sw-sync.jpg">
 <meta property="og:image" content="http://blueskyawen.com/images/service-workers.jpg">
-<meta property="og:updated_time" content="2019-02-23T15:53:43.179Z">
+<meta property="og:updated_time" content="2019-02-23T15:59:01.662Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PWA与angular的Service Worker">
-<meta name="twitter:description" content="PWA是什么PWA，全称Progressive Web Apps，是一种接近原生用户体验的渐进增强的 Web 应用，利用现代浏览器特性从安全、性能和体验三个方面，优化我们的Web AppPWA不是某一项技术,而是一系列Web技术与标准的集合与应用,由Google在2015年提出，旨在渐进增强，不是替代现有的移动App，而是让web应用有媲美原生应用的体验，更加对移动环境友好   应用场景PWA主要">
+<meta name="twitter:title" content="PWA与angular中的Service Worker">
+<meta name="twitter:description" content="PWA是什么PWA，全称Progressive Web Apps，是一种接近原生用户体验的渐进增强的 Web 应用，利用现代浏览器特性从安全、性能和体验三个方面，优化我们的Web AppPWA不是某一项技术,而是一系列Web技术与标准的集合与应用,由Google在2015年提出，旨在渐进增强，不是替代现有的移动App，而是让web应用有媲美原生应用的体验，更加对移动环境友好">
 <meta name="twitter:image" content="http://blueskyawen.com/images/service-worker2.png">
   
     <link rel="alternative" href="/atom.xml" title="bluesky个人小站" type="application/atom+xml">
@@ -182,7 +182,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      PWA与angular的Service Worker
+      PWA与angular中的Service Worker
     </h1>
   
 
@@ -195,8 +195,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="PWA"><a href="#PWA" class="headerlink" title="PWA"></a>PWA</h1><h3 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h3><p>PWA，全称Progressive Web Apps，是一种接近原生用户体验的渐进增强的 Web 应用，利用现代浏览器特性从安全、性能和体验三个方面，<br>优化我们的Web App<br>PWA不是某一项技术,而是一系列Web技术与标准的集合与应用,由Google在2015年提出，旨在渐进增强，不是替代现有的移动App，<br>而是让web应用有媲美原生应用的体验，更加对移动环境友好  </p>
-<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>PWA主要应用于移动应用的开发，当前APP对设备内存等资源的需求量越来越大，PWA是颠覆者，旨解决移动设备的硬件限制，以及网络状况不佳下的服务访问<br><a id="more"></a></p>
+        <h1 id="PWA"><a href="#PWA" class="headerlink" title="PWA"></a>PWA</h1><h3 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h3><p>PWA，全称Progressive Web Apps，是一种接近原生用户体验的渐进增强的 Web 应用，利用现代浏览器特性从安全、性能和体验三个方面，<br>优化我们的Web App<br>PWA不是某一项技术,而是一系列Web技术与标准的集合与应用,由Google在2015年提出，旨在渐进增强，不是替代现有的移动App，<br>而是让web应用有媲美原生应用的体验，更加对移动环境友好<br><a id="more"></a></p>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>PWA主要应用于移动应用的开发，当前APP对设备内存等资源的需求量越来越大，PWA是颠覆者，旨解决移动设备的硬件限制，以及网络状况不佳下的服务访问</p>
 <h3 id="技术特点"><a href="#技术特点" class="headerlink" title="技术特点"></a>技术特点</h3><p>PWA之所以能够成为未来的趋势，被广大开发者推崇，还是因为其具有一些优秀的技术特点：</p>
 <ul>
 <li>安全，通过 HTTPS 来提供服务来防止网络窥探，保证内容不被篡改</li>
@@ -311,10 +311,8 @@
 <h4 id="APP-Shell"><a href="#APP-Shell" class="headerlink" title="APP Shell"></a>APP Shell</h4><p>App Shell架构是构建 PWA 应用的一种方式，它通常提供了一个最基本的 Web App 框架，包括应用的头部、底部、菜单栏等结构<br>顾名思义，我们可以把它理解成应用的一个「空壳」，这个「空壳」仅包含页面框架所需的最基本的 HTML 片段，CSS 和 javaScript，这样一来，用户重复打开应用时就能迅速地看到 Web App 的基本界面，只需要从网络中请求、加载必要的内容。<br>我们使用 Service Worker 对 App Shell 做离线缓存，以便它可以在离线时正常展现，达到类似 Native App 的体验。<br>开发一个 App Shell, 我们通常要注意以下几点：</p>
 <ul>
 <li>将动态内容与 Shell 分离</li>
-<li>尽可能使用较少的数据，实现快速加载<ul>
+<li>尽可能使用较少的数据，实现快速加载</li>
 <li>使用本地缓存中的静态资源</li>
-</ul>
-</li>
 </ul>
 <h3 id="PWA的发展现状及挑战"><a href="#PWA的发展现状及挑战" class="headerlink" title="PWA的发展现状及挑战"></a>PWA的发展现状及挑战</h3><p>PWA由谷歌和W3C强力推广，在国外已经是百花齐放，众多的公共应用和知名APP都提供了PWA的版本，比如：推特，Instagram，Flipboard等，并且据说用户体验与原生App相差不大<br>但是目前在国内的发展并不明显，主要有几个原因</p>
 <ul>
@@ -335,7 +333,7 @@
 </ol>
 <p>此外，还把boot-shadow插件库的demo网页进行了PWA改造，支持离线访问<br><a href="https://blueskyawen.com/boot-shadow">boot-shadow(pwa)</a>  </p>
 <p>以上均可以再移动端和桌面客户端访问</p>
-<h1 id="Angular的Service-Worker实现"><a href="#Angular的Service-Worker实现" class="headerlink" title="Angular的Service Worker实现"></a>Angular的Service Worker实现</h1><p>Service Worker是PWA中必不可少的一部分，可提供资源缓存、离线访问等功能<br>Service Worker会在首次访问时加载，之后可直接访问，即使关闭了浏览器标签<br>使用Service Worker主要是为了改善应用对网络的依赖，提高用户体验  </p>
+<h1 id="Angular的Service-Worker实现"><a href="#Angular的Service-Worker实现" class="headerlink" title="Angular的Service Worker实现"></a>Angular的Service Worker实现</h1><p>Service Worker是PWA中必不可少的一部分，可提供资源缓存、离线访问等功能,Service Worker会在首次访问时加载，之后可直接访问，即使关闭了浏览器标签<br>使用Service Worker主要是为了改善应用对网络的依赖，提高用户体验  </p>
 <h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><p>Angular的Service Worker会从服务器上下载一个manifest文件，这个 文件描述了要缓存的资源，并包含每个文件内容的哈希值。     当发布了应用的一个新版本时，manifest的内容就会改变，通知 Service Worker 应该下载并缓存应用的一个新版本了<br>Angular使用文件ngsw-config.json来配置Service Worker，指定需呀缓存那些资源以及其它的行为设定，而本应该最终要缓存的资源会记录到生成的ngsw.json文件里</p>
 <h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>在Angular中使用Service Worker像引入一个 NgModule 一样简单  </p>
 <pre><code>import { BrowserModule } from &apos;@angular/platform-browser&apos;;
@@ -654,11 +652,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">写作</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">写作</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -670,11 +668,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color5">rxjs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">rxjs</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -690,19 +688,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Jquery，plugin</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">angular，plugin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">angular</a>
               </li>
              
               <li class="article-tag-list-item">
