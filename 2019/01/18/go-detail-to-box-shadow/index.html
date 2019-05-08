@@ -6,19 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://blueskyawen.com">
-  <title>详解box-shadow | bluesky个人小站</title>
+  <title>深入理解box-shadow | bluesky个人小站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="待补充—">
+  <meta name="description" content="之前有介绍过box-shadow这个属性，目的为框盒子添加阴影，也了解一些使用方式，使用起来也不是十分复杂。但是最近在开展单位的前端cop项目时，发现此属性不简单，还可以这样用，而且会发现一些看似复杂好玩的东西竟然是用box-shadow实现的。网上介绍这个属性的大部分文章都是介绍怎么使用，各个属性值怎么设置会有如何的效果之类的，少有深入探讨，感觉读完之后知其然，却不知所以然，无法清晰融会。于是下">
+<meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="详解box-shadow">
+<meta property="og:title" content="深入理解box-shadow">
 <meta property="og:url" content="http://blueskyawen.com/2019/01/18/go-detail-to-box-shadow/index.html">
 <meta property="og:site_name" content="bluesky个人小站">
-<meta property="og:description" content="待补充—">
+<meta property="og:description" content="之前有介绍过box-shadow这个属性，目的为框盒子添加阴影，也了解一些使用方式，使用起来也不是十分复杂。但是最近在开展单位的前端cop项目时，发现此属性不简单，还可以这样用，而且会发现一些看似复杂好玩的东西竟然是用box-shadow实现的。网上介绍这个属性的大部分文章都是介绍怎么使用，各个属性值怎么设置会有如何的效果之类的，少有深入探讨，感觉读完之后知其然，却不知所以然，无法清晰融会。于是下">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-07T17:58:50.338Z">
+<meta property="og:image" content="http://blueskyawen.com/images/box-shadow-outset.png">
+<meta property="og:image" content="http://blueskyawen.com/images/box-shadow-inset.png">
+<meta property="og:updated_time" content="2019-05-08T16:58:51.999Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="详解box-shadow">
-<meta name="twitter:description" content="待补充—">
+<meta name="twitter:title" content="深入理解box-shadow">
+<meta name="twitter:description" content="之前有介绍过box-shadow这个属性，目的为框盒子添加阴影，也了解一些使用方式，使用起来也不是十分复杂。但是最近在开展单位的前端cop项目时，发现此属性不简单，还可以这样用，而且会发现一些看似复杂好玩的东西竟然是用box-shadow实现的。网上介绍这个属性的大部分文章都是介绍怎么使用，各个属性值怎么设置会有如何的效果之类的，少有深入探讨，感觉读完之后知其然，却不知所以然，无法清晰融会。于是下">
+<meta name="twitter:image" content="http://blueskyawen.com/images/box-shadow-outset.png">
   
     <link rel="alternative" href="/atom.xml" title="bluesky个人小站" type="application/atom+xml">
   
@@ -173,7 +177,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      详解box-shadow
+      深入理解box-shadow
     </h1>
   
 
@@ -186,8 +190,68 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>待补充—</p>
-<a id="more"></a>
+        <p>之前有介绍过box-shadow这个属性，目的为框盒子添加阴影，也了解一些使用方式，使用起来也不是十分复杂。但是最近在开展单位的前端cop项目时，发现此属性不简单，还可以这样用，而且会发现一些看似复杂好玩的东西竟然是用box-shadow实现的。<br>网上介绍这个属性的大部分文章都是介绍怎么使用，各个属性值怎么设置会有如何的效果之类的，少有深入探讨，感觉读完之后知其然，却不知所以然，无法清晰融会。于是下来好好研究了一下，记录如下。<br><a id="more"></a></p>
+<p><strong>使用语法：</strong>  </p>
+<pre><code>box-shadow: x-shadow y-shadow blur-radius spread-radius color type;
+</code></pre><p>各属性值含义：</p>
+<ul>
+<li>x-shadow：水平阴影的偏移，当值为正时，阴影往x轴正向偏移,即水平向右；反之，值为负时，阴影往x轴反向偏移，即水平向左</li>
+<li>y-shadow：垂直阴影的偏移，当值为正时，阴影往y轴正向偏移,即垂直向下；反之，值为负时，阴影往y轴反向偏移，即垂直向上</li>
+<li>blur-radius：模糊距离，不能为负值；为0表示不模糊，值越大，阴影的边缘就越大，也就越模糊</li>
+<li>spread-radius：阴影的尺寸，参数可选，不设置为0；正值表示阴影扩展，负值表示阴影反向缩小，可抵消偏移和模糊距离的尺寸</li>
+<li>color：阴影的颜色，参数可选，不设置便使用浏览器的默认色，因为各浏览器的默认色不同，推荐还是设置一下</li>
+<li>type：阴影类型，参数可选，不设置默认outset（外部阴影）， 还有inset（内部阴影）</li>
+</ul>
+<h2 id="外部阴影"><a href="#外部阴影" class="headerlink" title="外部阴影"></a>外部阴影</h2><p>当type不设置或设置为outset时，是为外部阴影，例如：</p>
+<pre><code>box-shadow: 5px 5px 5px 5px #ccc;
+box-shadow: 5px 5px 5px 5px #ccc outset;
+</code></pre><p>外部阴影在浏览器渲染时一般是如下几步实现的，</p>
+<ol>
+<li>根据color克隆一个和原始元素相同尺寸的元素“覆盖”其上</li>
+<li>根据spread-radius向四周增加对应颜色的阴影，类似于“边框”</li>
+<li>然后根据指定的x-shadow 和 x-shadow 将克隆出来的元素进行偏移</li>
+<li>根据指定的blur-radius设置模糊半径，一般是依据高斯算法进行模糊处理，本质上是在阴影边缘将阴影色往纯透明色之间进行颜色过渡，所以看到是模糊是逐渐变淡并向外扩散的</li>
+<li>最后，将克隆元素与原始原属的交集“剪切”去，剩余部分便是最终阴影效果</li>
+</ol>
+<p>各步大概的图示如下：</p>
+<p><img src="/images/box-shadow-outset.png" alt="box-shadow-outset"></p>
+<p>为了更加方便的观察这个原理，图中特意设置了透明度，可进入<a href="http://blueskyawen.com/angular-work-cook/main/other/boxShadow/lizi">外部阴影</a>观察动态效果</p>
+<p>最终的阴影尺寸为：</p>
+<ul>
+<li>top阴影: spread-radius - y-shadow + blur-radius</li>
+<li>left阴影: spread-radius - x-shadow + blur-radius</li>
+<li>bottom阴影: spread-radius + y-shadow + blur-radius</li>
+<li>right阴影: spread-radius + x-shadow + blur-radius</li>
+</ul>
+<blockquote>
+<p>当模糊距离为0，只有spread-radius时，效果相当于border，但这并不是真正的border，盒子模型计算时宽高不会被计算在内</p>
+</blockquote>
+<h2 id="2-内部阴影"><a href="#2-内部阴影" class="headerlink" title="2 内部阴影"></a>2 内部阴影</h2><p>当type设置为inset时，是为内部阴影，例如：</p>
+<pre><code>box-shadow: 5px 5px 5px 5px #ccc inset;
+</code></pre><p>个人理解，内部阴影在浏览器渲染时一般是如下几步实现的，</p>
+<ol>
+<li>根据color克隆一个比原始元素相同尺寸大的元素“覆盖”其上</li>
+<li>根据spread-radius向四周沿着border向内切割掉部分克隆的元素，留下对应尺寸的spread</li>
+<li>然后根据指定的x-shadow 和 x-shadow 将克隆出来的元素进行偏移</li>
+<li>根据指定的blur-radius设置模糊半径，一般是依据高斯算法进行模糊处理，本质上是在阴影边缘将阴影色往纯透明色之间进行颜色过渡，所以看到是模糊是逐渐变淡并向外扩散的</li>
+<li>最后，将克隆元素在原始原始边框外面的部分“剪切”去，剩余部分便是最终阴影效果</li>
+</ol>
+<p>各步大概的图示如下：</p>
+<p><img src="/images/box-shadow-inset.png" alt="box-shadow-outset"></p>
+<p>为了更加方便的观察这个原理，图中特意设置了透明度，可进入<a href="http://blueskyawen.com/angular-work-cook/main/other/boxShadow/demo">内部阴影</a>观察动态效果</p>
+<p>最终的阴影尺寸为：</p>
+<ul>
+<li>top阴影: spread-radius + y-shadow + blur-radius</li>
+<li>left阴影: spread-radius + x-shadow + blur-radius</li>
+<li>bottom阴影: spread-radius - y-shadow + blur-radius</li>
+<li>right阴影: spread-radius - x-shadow + blur-radius</li>
+</ul>
+<h2 id="3-多个阴影及层级关系"><a href="#3-多个阴影及层级关系" class="headerlink" title="3 多个阴影及层级关系"></a>3 多个阴影及层级关系</h2><p><strong>1） 多个阴影</strong><br>当多个阴影重叠时，声明在前面会覆盖后面的，比如：</p>
+<p>box-shadow: 0px 0px 5px 10px blue, 0px 0px 5px 20px red;</p>
+<p>其中前面的蓝色阴影会覆盖后面的红色阴影</p>
+<p><strong>2） 层级关系</strong><br>有了框阴影，便有了内外阴影，元素边框，背景和内容等的呈现层级关系，一般为如下层级关系：<br>border &gt; 内阴影 &gt; background-image &gt; background-color &gt; 外阴影  </p>
+<p>可以点击此处试一试： <a href="http://blueskyawen.com/angular-work-cook/main/other/boxShadow/demo">内部阴影</a> </p>
+<p>附：<br><a href="http://blueskyawen.com/angular-work-cook/main/other/boxShadow/demos">box-shadow的demo</a> </p>
 
       
 
@@ -227,7 +291,29 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
