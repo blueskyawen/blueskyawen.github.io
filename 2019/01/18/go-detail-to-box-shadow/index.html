@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blueskyawen.com/images/box-shadow-outset.png">
 <meta property="og:image" content="http://blueskyawen.com/images/box-shadow-inset.png">
-<meta property="og:updated_time" content="2019-05-08T16:58:51.999Z">
+<meta property="og:updated_time" content="2019-05-09T18:19:24.027Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解box-shadow">
 <meta name="twitter:description" content="之前有介绍过box-shadow这个属性，目的为框盒子添加阴影，也了解一些使用方式，使用起来也不是十分复杂。但是最近在开展单位的前端cop项目时，发现此属性不简单，还可以这样用，而且会发现一些看似复杂好玩的东西竟然是用box-shadow实现的。网上介绍这个属性的大部分文章都是介绍怎么使用，各个属性值怎么设置会有如何的效果之类的，少有深入探讨，感觉读完之后知其然，却不知所以然，无法清晰融会。于是下">
@@ -210,7 +210,7 @@ box-shadow: 5px 5px 5px 5px #ccc outset;
 <li>根据color克隆一个和原始元素相同尺寸的元素“覆盖”其上</li>
 <li>根据spread-radius向四周增加对应颜色的阴影，类似于“边框”</li>
 <li>然后根据指定的x-shadow 和 x-shadow 将克隆出来的元素进行偏移</li>
-<li>根据指定的blur-radius设置模糊半径，一般是依据高斯算法进行模糊处理，本质上是在阴影边缘将阴影色往纯透明色之间进行颜色过渡，所以看到是模糊是逐渐变淡并向外扩散的</li>
+<li>根据指定的blur-radius设置模糊半径，一般是依据高斯算法进行模糊处理，本质上是在阴影边缘将阴影色往纯透明色之间进行颜色过渡，所以看到是模糊是逐渐变淡的；而且据了解blur是沿边缘线两边各一半距离，并从里向外扩散</li>
 <li>最后，将克隆元素与原始原属的交集“剪切”去，剩余部分便是最终阴影效果</li>
 </ol>
 <p>各步大概的图示如下：</p>
@@ -218,10 +218,10 @@ box-shadow: 5px 5px 5px 5px #ccc outset;
 <p>为了更加方便的观察这个原理，图中特意设置了透明度，可进入<a href="http://blueskyawen.com/angular-work-cook/main/other/boxShadow/lizi">外部阴影</a>观察动态效果</p>
 <p>最终的阴影尺寸为：</p>
 <ul>
-<li>top阴影: spread-radius - y-shadow + blur-radius</li>
-<li>left阴影: spread-radius - x-shadow + blur-radius</li>
-<li>bottom阴影: spread-radius + y-shadow + blur-radius</li>
-<li>right阴影: spread-radius + x-shadow + blur-radius</li>
+<li>top阴影: spread-radius - y-shadow + blur-radius/2</li>
+<li>left阴影: spread-radius - x-shadow + blur-radius/2</li>
+<li>bottom阴影: spread-radius + y-shadow + blur-radius/2</li>
+<li>right阴影: spread-radius + x-shadow + blur-radius/2</li>
 </ul>
 <blockquote>
 <p>当模糊距离为0，只有spread-radius时，效果相当于border，但这并不是真正的border，盒子模型计算时宽高不会被计算在内</p>
@@ -241,10 +241,10 @@ box-shadow: 5px 5px 5px 5px #ccc outset;
 <p>为了更加方便的观察这个原理，图中特意设置了透明度，可进入<a href="http://blueskyawen.com/angular-work-cook/main/other/boxShadow/demo">内部阴影</a>观察动态效果</p>
 <p>最终的阴影尺寸为：</p>
 <ul>
-<li>top阴影: spread-radius + y-shadow + blur-radius</li>
-<li>left阴影: spread-radius + x-shadow + blur-radius</li>
-<li>bottom阴影: spread-radius - y-shadow + blur-radius</li>
-<li>right阴影: spread-radius - x-shadow + blur-radius</li>
+<li>top阴影: spread-radius + y-shadow + blur-radius/2</li>
+<li>left阴影: spread-radius + x-shadow + blur-radius/2</li>
+<li>bottom阴影: spread-radius - y-shadow + blur-radius/2</li>
+<li>right阴影: spread-radius - x-shadow + blur-radius/2</li>
 </ul>
 <h2 id="3-多个阴影及层级关系"><a href="#3-多个阴影及层级关系" class="headerlink" title="3 多个阴影及层级关系"></a>3 多个阴影及层级关系</h2><p><strong>1） 多个阴影</strong><br>当多个阴影重叠时，声明在前面会覆盖后面的，比如：</p>
 <p>box-shadow: 0px 0px 5px 10px blue, 0px 0px 5px 20px red;</p>
@@ -553,10 +553,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">设计</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
@@ -573,11 +569,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">angular，plugin</a>
+                <a href="javascript:void(0)" class="js-tag color3">设计</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">angular，plugin</a>
               </li>
              
               <li class="article-tag-list-item">
