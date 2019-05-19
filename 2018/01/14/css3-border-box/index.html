@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blueskyawen.com/images/2018-01-08_borde-radius.jpg">
 <meta property="og:image" content="http://blueskyawen.com/images/2018-01-08_border-images.jpg">
-<meta property="og:updated_time" content="2019-02-14T17:41:37.354Z">
+<meta property="og:updated_time" content="2019-05-19T06:18:57.939Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS3-边框和文本">
 <meta name="twitter:description" content="边框border-radius顺序设置元素每个角的圆角边框">
@@ -221,7 +221,7 @@ border-radius:2px;
 border-top-right-radius   //定义了右上角的弧度
 border-bottom-right-radius   //定义了右下角的弧度
 border-bottom-left-radius   //定义了左下角的弧度
-</code></pre><p>具体Demo请点击此处：<a href="http://sandbox.runjs.cn/show/7vitapay" target="_blank" rel="noopener">border-radius-demo</a></p>
+</code></pre><p>具体Demo请点击此处：<a href="http://blueskyawen.com/angular-work-cook/main/other/css3/text-box/border-radius">border-radius-demo</a></p>
 <h6 id="box-shadow"><a href="#box-shadow" class="headerlink" title="box-shadow"></a>box-shadow</h6><p>向框添加一个或多个阴影</p>
 <pre><code>box-shadow: x-shadow y-shadow blur spread color inset;
 </code></pre><ul>
@@ -232,9 +232,9 @@ border-bottom-left-radius   //定义了左下角的弧度
 <li>color，阴影的颜色</li>
 <li>将外部阴影 (outset) 改为内部阴影</li>
 </ul>
-<p>具体Demo请点击此处：<a href="http://sandbox.runjs.cn/show/qcbishon" target="_blank" rel="noopener">box-shadow-demo</a></p>
+<p>具体Demo请点击此处：<a href="http://blueskyawen.com/angular-work-cook/main/other/boxShadow/lizi">box-shadow-demo</a></p>
 <h6 id="border-image"><a href="#border-image" class="headerlink" title="border-image"></a>border-image</h6><p>图片边框,几种属性的简写</p>
-<pre><code>border-image：border-image-source border-image-slice border-image-width fill border-image-outset border-image-repeat
+<pre><code>border-image：border-image-source border-image-slice / border-image-width / border-image-outset fill border-image-repeat
 </code></pre><p>其中：</p>
 <ul>
 <li>border-image-source，用在边框的图片的路径</li>
@@ -245,9 +245,29 @@ border-bottom-left-radius   //定义了左下角的弧度
 <li>fill，指示中间部分是否显示，fill则显示，否则不显示</li>
 </ul>
 <p>简单写来：</p>
-<pre><code>border-image：image-source (slice1 slice2 slice3 slice) (width1 width2 width3 width4) fill outset repeat;
+<pre><code>border-image：image-source slice1 slice2 slice3 slice / width1 width2 width3 width4 / outset1 outset2 outset3 outset4 fill repeat;
 </code></pre><p>其中：<br><strong>width1-4</strong>是“上右下左”顺序四个图片边框的宽度，省略时以对面为准，同border其他属性的设置方式<br><strong>slice1-4</strong>是“上右下左”顺序四个切割的宽度，切割出来的图片被用来显示成边框，如下图，类似于9宫格的切片方式<br><img src="/images/2018-01-08_border-images.jpg" alt="border-image"></p>
 <p>四个角用作图边框的角，四边切出来的图片用作image边框4边的填充图</p>
+<p>具体Demo请点击此处：<a href="http://blueskyawen.com/angular-work-cook/main/other/css3/text-box/border-image">border-image-demo</a></p>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><h5 id="背景色"><a href="#背景色" class="headerlink" title="背景色"></a>背景色</h5><pre><code>background-color: color;
+background-clip: border-box;
+或
+background: color border-box;
+</code></pre><p>其中clip为背景绘制区域，有border-box/padding-box/content-box几种类型值</p>
+<h5 id="背景图片"><a href="#背景图片" class="headerlink" title="背景图片"></a>背景图片</h5><pre><code>background-image: url(***.jpg);
+background-position: left top;
+background-size: contain;
+background-repeat: no-repeat;
+background-origin: border-box;
+background-attach: scroll;
+或
+background: image position / size repeat attach;
+</code></pre><p>其中:</p>
+<ul>
+<li>background-origin，是背景图片的定位方式，有border-box/padding-box/content-box取值，类似与背景的clip</li>
+<li>background-attach，定义背景图是否随着页面内容滚动而滚动，取值scroll/fixed，但是这个属性是针对于整个页面生效的，对单个盒子是不生效的</li>
+</ul>
+<p>具体Demo请点击此处：<a href="http://blueskyawen.com/angular-work-cook/main/other/css3/box-back/background">background-demo</a></p>
 <h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><h6 id="white-space"><a href="#white-space" class="headerlink" title="white-space"></a>white-space</h6><p>设置如何处理元素内的空白，值</p>
 <ul>
 <li>normal，默认，空白会被浏览器忽略。</li>
@@ -266,7 +286,7 @@ border-bottom-left-radius   //定义了左下角的弧度
 <li>blur，可选，模糊的距离</li>
 <li>color，阴影的颜色</li>
 </ul>
-<p>具体Demo请点击此处：<a href="http://sandbox.runjs.cn/show/zapn5yh5" target="_blank" rel="noopener">text-shadow</a></p>
+<p>具体Demo请点击此处：<a href="http://blueskyawen.com/angular-work-cook/main/other/css3/text-box/text-shadow">text-shadow</a></p>
 <h6 id="text-overflow"><a href="#text-overflow" class="headerlink" title="text-overflow"></a>text-overflow</h6><p>规定当文本溢出包含元素时发生的事情</p>
 <ul>
 <li>clip，修剪文本</li>
@@ -559,15 +579,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">写作</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -579,15 +599,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">rxjs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">设计</a>
+                <a href="javascript:void(0)" class="js-tag color5">rxjs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -595,15 +611,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Jqury</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">设计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Jquery，plugin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Jqury</a>
               </li>
              
               <li class="article-tag-list-item">

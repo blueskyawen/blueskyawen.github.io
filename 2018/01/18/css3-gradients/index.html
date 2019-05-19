@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://blueskyawen.com">
   <title>css3-渐变 | bluesky个人小站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="线性渐变线性渐变是几个颜色沿着一定角度的“发射线”而形成的颜色过渡效果线性渐变声明方式：">
+  <meta name="description" content="渐变是css3新增加的一种属性，分线性渐变和径向渐变，可渲染出一些复杂的效果，比如：  background: linear-gradient(angle角度，color1-stop,color2-stop,...); 渐变其实是一种特殊的背景图片，因此可以像背景图一样使用，并配合背景底色 background-image: linear-gradient(angle角度，color1-stop,">
 <meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="css3-渐变">
 <meta property="og:url" content="http://blueskyawen.com/2018/01/18/css3-gradients/index.html">
 <meta property="og:site_name" content="bluesky个人小站">
-<meta property="og:description" content="线性渐变线性渐变是几个颜色沿着一定角度的“发射线”而形成的颜色过渡效果线性渐变声明方式：">
+<meta property="og:description" content="渐变是css3新增加的一种属性，分线性渐变和径向渐变，可渲染出一些复杂的效果，比如：  background: linear-gradient(angle角度，color1-stop,color2-stop,...); 渐变其实是一种特殊的背景图片，因此可以像背景图一样使用，并配合背景底色 background-image: linear-gradient(angle角度，color1-stop,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-14T17:41:37.355Z">
+<meta property="og:updated_time" content="2019-05-19T05:05:43.253Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css3-渐变">
-<meta name="twitter:description" content="线性渐变线性渐变是几个颜色沿着一定角度的“发射线”而形成的颜色过渡效果线性渐变声明方式：">
+<meta name="twitter:description" content="渐变是css3新增加的一种属性，分线性渐变和径向渐变，可渲染出一些复杂的效果，比如：  background: linear-gradient(angle角度，color1-stop,color2-stop,...); 渐变其实是一种特殊的背景图片，因此可以像背景图一样使用，并配合背景底色 background-image: linear-gradient(angle角度，color1-stop,">
   
     <link rel="alternative" href="/atom.xml" title="bluesky个人小站" type="application/atom+xml">
   
@@ -187,7 +187,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="线性渐变"><a href="#线性渐变" class="headerlink" title="线性渐变"></a>线性渐变</h1><p>线性渐变是几个颜色沿着一定角度的“发射线”而形成的颜色过渡效果<br>线性渐变声明方式：<br><a id="more"></a></p>
+        <p>渐变是css3新增加的一种属性，分线性渐变和径向渐变，可渲染出一些复杂的效果，比如： </p>
+<pre><code>background: linear-gradient(angle角度，color1-stop,color2-stop,...);
+</code></pre><p>渐变其实是一种特殊的背景图片，因此可以像背景图一样使用，并配合背景底色</p>
+<pre><code>background-image: linear-gradient(angle角度，color1-stop,color2-stop,...);
+background-color: #f2f2f2;
+</code></pre><blockquote>
+<p>渐变至少要两个色标</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="线性渐变"><a href="#线性渐变" class="headerlink" title="线性渐变"></a>线性渐变</h1><p>线性渐变是几个颜色沿着一定角度的“发射线”而形成的颜色过渡效果<br>线性渐变声明方式：</p>
 <pre><code>linear-gradient(angle角度，color1-stop,color2-stop,...)
 </code></pre><p>其中：</p>
 <h5 id="1-angle角度"><a href="#1-angle角度" class="headerlink" title="1. angle角度"></a>1. angle角度</h5><p>指的是沿着元素中心的“射线”的角度，几个颜色点就是沿着这根射线的方向在变化和过渡的，<strong>从下向上为0deg，顺时针为正，逆时针为负值</strong><br>也可以使用关键字来指明方向，to top表示<strong>从下往上</strong>，to top left表示从<strong>右下角往左上角</strong>，当height=width的时候：</p>
@@ -199,8 +208,7 @@ to top left -&gt; -45deg(或315deg)
 to top right -&gt; 45deg
 to bottom left -&gt; -135deg(或225deg)
 to bottom right -&gt; 135deg
-</code></pre><p>效果见Demo:<a href="http://sandbox.runjs.cn/show/mqjc0fli" target="_blank" rel="noopener">linear-gradient-demo</a></p>
-<h5 id="2-色标"><a href="#2-色标" class="headerlink" title="2. 色标"></a>2. 色标</h5><p>色标就是上面的color-stop，指的是每个颜色的结束位置，包括颜色和位置，比如：</p>
+</code></pre><h5 id="2-色标"><a href="#2-色标" class="headerlink" title="2. 色标"></a>2. 色标</h5><p>色标就是上面的color-stop，指的是每个颜色的结束位置，包括颜色和位置，比如：</p>
 <pre><code>red 20% blue 50% //在20%-&gt;50%的位置范围内从red过渡到blue
 </code></pre><p>位置如果不写的话，默认平均分配，比如下面写法效果一样：</p>
 <pre><code>linear-gradient(red, green, blue)
@@ -214,15 +222,14 @@ linear-gradient(red 0%, green 50%, blue 100%)
 <p>当两个不同颜色位置写诚一样时，可形成边界分明的“颜色条”，比如：</p>
 <pre><code>linear-gradient(red 0%,red30%，green 30%，green 50%,blue 50%blue 100%)
 </code></pre><p>表示：0%-&gt;30%，red;30%-&gt;30%，red到green,一般显示一条边界线;30%-&gt;50%，green;50%-&gt;100%,blue</p>
-<p>效果见Demo:<a href="http://sandbox.runjs.cn/show/mqjc0fli" target="_blank" rel="noopener">linear-gradient-demo</a></p>
 <h5 id="3-重复渐变"><a href="#3-重复渐变" class="headerlink" title="3. 重复渐变"></a>3. 重复渐变</h5><p>当首尾两颜色位置不在0%或100%时，可以进行重复渐变,使色标在渐变线方向上无限重复,形成特殊的排列效果<br>例子：</p>
 <pre><code>background: -webkit-repeating-linear-gradient(blue 20%,green 50%);
 background: repeating-linear-gradient(blue 20%,green 50%);
 </code></pre><p>#####4. 多次渐变组合背景<br>颜色渐变可以定义多次，这些渐变效果将会重叠在一起，合理使用背景的其他属性，比如：size,repeat，可以构造处多个渐变的组合效果，这里不缀述，可以参考后面的demo</p>
-<p>本文所有的效果见:<a href="http://sandbox.runjs.cn/show/mqjc0fli" target="_blank" rel="noopener">linear-gradient-demo</a></p>
+<p>本文所有的效果见:<a href="http://blueskyawen.com/angular-work-cook/main/other/css3/box-back/gradient">linear-gradient-demo</a></p>
 <p>参考文章：<a href="https://www.cnblogs.com/xiaohuochai/archive/2016/04/12/5370446.html" target="_blank" rel="noopener">深入理解线性渐变</a></p>
 <h1 id="径向渐变"><a href="#径向渐变" class="headerlink" title="径向渐变"></a>径向渐变</h1><p>径向渐变从圆心点以椭圆形状向外扩散，渐变的实现由两部分组成：位置，形状，size和色标</p>
-<pre><code>radial-gradient(shape size ?at position ? color-stop，..)
+<pre><code>radial-gradient(shape size ?at position, color-stop，..)
 </code></pre><p>#####1.位置<br>位置指的是径向椭圆的中心点的位置，可以使用关键字/百分比/整数来定义，比如：</p>
 <pre><code>at top left
 at 200px 200px
@@ -233,9 +240,9 @@ top right：100% 0%
 center center：50% 50%
 bottom left：0% 100%
 bottom right：100% 100%
-</code></pre><p>#####2.形状<br>形状指的是圆形还是椭圆：circle/ellipse，默认是椭圆，可以不用书写;<br>不过好像circle不能和at position一起用，不知道怎么回事</p>
+</code></pre><p>#####2.形状<br>形状指的是圆形还是椭圆：circle/ellipse，默认是椭圆，可以不用书写;</p>
 <p>#####3.size<br>这个主要是径向渐变发散的半径不同，可以参考文档：<br><a href="http://www.cnblogs.com/xiaohuochai/p/5383285.html" target="_blank" rel="noopener">深入理解径性渐变</a></p>
-<p>本节所有demo可见：<a href="http://sandbox.runjs.cn/show/rnfvcray" target="_blank" rel="noopener">径向渐变-demo</a></p>
+<p>本节所有demo可见：<a href="http://blueskyawen.com/angular-work-cook/main/other/css3/box-back/gradient">径向渐变-demo</a></p>
 
       
 
@@ -509,15 +516,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">写作</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -529,15 +536,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">rxjs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">设计</a>
+                <a href="javascript:void(0)" class="js-tag color5">rxjs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -545,15 +548,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Jqury</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">设计</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Jquery，plugin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Jqury</a>
               </li>
              
               <li class="article-tag-list-item">
