@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blueskyawen.com/images/2018-01-07_skew1.jpg">
 <meta property="og:image" content="http://blueskyawen.com/images/2018-01-07_skew2.jpg">
-<meta property="og:updated_time" content="2019-05-20T17:47:14.008Z">
+<meta property="og:updated_time" content="2019-05-22T17:04:25.920Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css3-2D变换">
 <meta name="twitter:description" content="2D变换，能够对元素进行移动、缩放、转动、拉长或拉伸">
@@ -234,8 +234,7 @@
 -webkit-transform: skewX(30deg);
 -o-transform: skewX(30deg);
 -moz-transform: skewX(30deg);
-</code></pre><h6 id="4-transform-origin"><a href="#4-transform-origin" class="headerlink" title="4.transform-origin"></a>4.transform-origin</h6><pre><code>属性允许您改变被转换元素的位置，主要指定rotate旋转的参考点
-</code></pre><h6 id="5-skew-x-angle-y-angle"><a href="#5-skew-x-angle-y-angle" class="headerlink" title="5.skew(x-angle,y-angle)"></a>5.skew(x-angle,y-angle)</h6><p>沿着 X 和 Y 轴的 2D 倾斜转换<br>先按照元素两个中轴倾斜固定的角度，再将2根中轴线向两边平移形成</p>
+</code></pre><h6 id="4-skew-x-angle-y-angle"><a href="#4-skew-x-angle-y-angle" class="headerlink" title="4.skew(x-angle,y-angle)"></a>4.skew(x-angle,y-angle)</h6><p>沿着 X 和 Y 轴的 2D 倾斜转换<br>先按照元素两个中轴倾斜固定的角度，再将2根中轴线向两边平移形成</p>
 <pre><code>transform: skewY(30deg);
 -ms-transform: skewY(30deg);
 -webkit-transform: skewY(30deg);
@@ -254,7 +253,13 @@ transform: skewY(30deg);
 -o-transform: skewY(30deg);
 -moz-transform: skewY(30deg);
 </code></pre><p><img src="/images/2018-01-07_skew2.jpg" alt="skew2"></p>
-<p>Demo请点击此处：<br><a href="http://blueskyawen.com/angular-work-cook/main/other/css3/2d/translate">2D-translate-demo</a><br><a href="http://blueskyawen.com/angular-work-cook/main/other/css3/2d/skew">2D-skew-demo</a>  </p>
+<h4 id="transform-origin"><a href="#transform-origin" class="headerlink" title="transform-origin"></a>transform-origin</h4><p>此属性允许您改变被转换元素的位置，主要用于rotate，scale和skew函数的参考点，对translate无明显影响，其中：</p>
+<ul>
+<li>对于rotate，用于旋转的参考点位置</li>
+<li>对于scale，用于缩放时的变换方向，比如，origin：0% 100%-使用scaleY(N)时向上变换；origin：0% 50%-使用scaleY(N)时向两边变换；..等等，具体在文章末demo观察</li>
+<li>对于skew，用于变换的固定参考点</li>
+</ul>
+<p>Demo请点击此处，可以自行调节参数观察各函数的使用变化：<br><a href="http://blueskyawen.com/angular-work-cook/main/other/css3/2d/translate">2D-translate-demo</a><br><a href="http://blueskyawen.com/angular-work-cook/main/other/css3/2d/skew">2D-skew-demo</a>  </p>
 
       
 
@@ -548,11 +553,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color5">rxjs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">rxjs</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -568,19 +573,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Jquery，plugin</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">angular，plugin</a>
+                <a href="javascript:void(0)" class="js-tag color4">Jquery，plugin</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">angular</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">angular，plugin</a>
               </li>
              
               <li class="article-tag-list-item">
