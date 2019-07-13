@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://blueskyawen.com">
-  <title>css3-媒体查询与响应式设计 | bluesky个人小站</title>
+  <title>个人作品 | bluesky个人小站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="说起响应式设计，从字面上看比较难以理解，其实简单来说就是网页的设计根据设备的不同，窗口大小的变化等动态适配页面的布局和样式，以免出现变形和错乱，体验过差">
-<meta name="keywords" content="CSS">
-<meta property="og:type" content="article">
-<meta property="og:title" content="css3-媒体查询与响应式设计">
-<meta property="og:url" content="http://blueskyawen.com/2018/01/24/css3-modia/index.html">
+  <meta name="description" content="bootShadow  bootShadow ngCat  ngCat Trip-爱彼迎  Trip-爱彼迎 AngularCook  AngularCook">
+<meta property="og:type" content="website">
+<meta property="og:title" content="个人作品">
+<meta property="og:url" content="http://blueskyawen.com/projects/index.html">
 <meta property="og:site_name" content="bluesky个人小站">
-<meta property="og:description" content="说起响应式设计，从字面上看比较难以理解，其实简单来说就是网页的设计根据设备的不同，窗口大小的变化等动态适配页面的布局和样式，以免出现变形和错乱，体验过差">
+<meta property="og:description" content="bootShadow  bootShadow ngCat  ngCat Trip-爱彼迎  Trip-爱彼迎 AngularCook  AngularCook">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-14T17:41:37.357Z">
+<meta property="og:updated_time" content="2019-07-13T11:39:53.263Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="css3-媒体查询与响应式设计">
-<meta name="twitter:description" content="说起响应式设计，从字面上看比较难以理解，其实简单来说就是网页的设计根据设备的不同，窗口大小的变化等动态适配页面的布局和样式，以免出现变形和错乱，体验过差">
+<meta name="twitter:title" content="个人作品">
+<meta name="twitter:description" content="bootShadow  bootShadow ngCat  ngCat Trip-爱彼迎  Trip-爱彼迎 AngularCook  AngularCook">
   
     <link rel="alternative" href="/atom.xml" title="bluesky个人小站" type="application/atom+xml">
   
@@ -173,193 +172,30 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-css3-modia" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="page-undefined" class="article article-type-page " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      css3-媒体查询与响应式设计
+      个人作品
     </h1>
   
 
         
-        <a href="/2018/01/24/css3-modia/" class="archive-article-date">
-  	<time datetime="2018-01-24T15:40:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-24</time>
+        <a href="/projects/index.html" class="archive-article-date">
+  	<time datetime="2019-07-13T11:39:53.265Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>说起响应式设计，从字面上看比较难以理解，其实简单来说就是网页的设计根据设备的不同，窗口大小的变化等动态适配页面的布局和样式，以免出现变形和错乱，体验过差<br><a id="more"></a></p>
-<p>可以结合媒体查询，设备窗口和媒体查询一起进行页面的响应式设计</p>
-<h2 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h2><p>媒体查询可以根据媒体类型和特性条件来改变元素的样式，从而使得页面能够在不同设备下可以良好的呈现<br>媒体查询声明方式：</p>
-<pre><code>@media ([and|not|only]? media_type? （[and]? (featrue1)) ...[and]? (featrueN))),... {
-    CSS样式
-}
-</code></pre><p>这是使用正则表达式的规则表示的媒体查询的用法，<strong>可以以定义多个查询表达式，中间使用逗号相隔，只要一个表达式满足，其中的CSS样式便生效</strong>，每个“查询表达式”由类似的几部分组成</p>
-<h5 id="media-type"><a href="#media-type" class="headerlink" title="media_type"></a>media_type</h5><p>这是支持的媒体类型或设备，比如：</p>
-<ul>
-<li>all，适用所有设备，默认值</li>
-<li>print，打印媒介</li>
-<li>screen，屏幕</li>
-<li>speech，语言</li>
-</ul>
-<h5 id="修饰连接符"><a href="#修饰连接符" class="headerlink" title="修饰连接符"></a>修饰连接符</h5><p>and，not，only都是表达式的修饰符，可以修饰整个查询表达式，也可以修饰单个表达式，甚至链接多个表达式或特性来形成辅助的媒体查询<br><strong>（1）and</strong><br>and用户连接媒体类型和特性featrue,或者连接多个featrue，比如：</p>
-<pre><code>@media screen and (min-width: 700px) {
-  CSS...
-}
-//媒介是screen且宽度大于700px生效
-
-@media screen and (min-width: 700px) and (max-width: 1000px) {
-  CSS...
-}
-//媒介是screen，且700px&lt;= width &lt;= 1000px时生效
-</code></pre><p>当不指定媒体类型时默认all,前面可以省略</p>
-<pre><code>@media (min-width: 700px) {
-  CSS...
-}
-效果同下
-@media all and (min-width: 700px) {
-  CSS...
-}
-</code></pre><p><strong>（2）not</strong><br>not用于对整个表达式进行逻辑去反，且<strong>使用not操作符必须指定设备类型</strong>，比如：</p>
-<pre><code>@media not screen and (min-width:500px) {
-  CSS
-}
-</code></pre><p>指的对后面整个and表达式取反，就是说：当不是screen屏幕或者宽度大于500px，CSS都生效</p>
-<blockquote>
-<p>not操作符仅能用于一个完整的媒体查询</p>
-</blockquote>
-<p>说到这，得先说一下另一个特殊的操作-<strong>逗号操作符</strong>，用于将多个查询表达式连接在一起，只要其中一个表达式满足，即生效，看下面：</p>
-<pre><code>@media screen and (min-width:500px)，print and (max-width:700px) {
-  CSS
-}
-</code></pre><p>这就宽泛很多了，CSS生效的条件可以是：</p>
-<ol>
-<li>screen 且 width&gt;=500px</li>
-<li>print 且 width&lt;=700px</li>
-</ol>
-<p>好，下面把not加入进去，因为只能用于一个查询表达式，所以下面几种写法是一样的：</p>
-<pre><code>@media not screen and (min-width:500px)，print and (max-width:700px) {
-  CSS
-}
-
-@media (not screen and (min-width:500px))，print and (max-width:700px) {
-  CSS
-}
-
-@media print and (max-width:700px),not screen and (min-width:500px) {
-  CSS
-}
-</code></pre><p><strong>（3）only</strong><br>only操作符用于防止老的不支持媒体查询的浏览器不读取余下的媒体查询，同时一并忽略链接的样式表,比如：</p>
-<pre><code>&lt;link rel=&quot;stylesheet&quot; media=&quot;only screen and (width:700px)&quot; href=&quot;example.css&quot; /&gt;
-</code></pre><h5 id="featrue"><a href="#featrue" class="headerlink" title="featrue"></a>featrue</h5><p>featrue指的是除了媒体类型以外的限制条件，比如：height，width,常用的有：</p>
-<ul>
-<li>width,min-width,max-width</li>
-<li>height,min-height,max-height</li>
-<li>device-height,device-width</li>
-</ul>
-<p>更多可参看菜鸟教程：<a href="http://www.runoob.com/cssref/css3-pr-mediaquery.html" target="_blank" rel="noopener">modia</a></p>
-<p>使用方式：(featrue: value),比如：</p>
-<p>   @media screen and (min-width:500px) and (min-device-height:300px) {<br>      CSS<br>    }</p>
-<p>媒体查询相关demo: <a href="http://sandbox.runjs.cn/show/nq9no0uj" target="_blank" rel="noopener">媒体查询-demo</a></p>
-<h6 id="方向：横屏-竖屏"><a href="#方向：横屏-竖屏" class="headerlink" title="方向：横屏/竖屏"></a>方向：横屏/竖屏</h6><p>orientation：portrait | landscape</p>
-<ul>
-<li>portrait：指定输出设备中的页面可见区域高度大于或等于宽度</li>
-<li>landscape： 除portrait值情况外，都是landscape</li>
-</ul>
-<p>作为特性使用：</p>
-<pre><code>@media screen and (orientation: landscape) {
-    CSS
-}
-</code></pre><h2 id="Viewport"><a href="#Viewport" class="headerlink" title="Viewport"></a>Viewport</h2><p>viewport是用户网页的可视区域<br>比如，手机浏览器是把页面放在一个虚拟的”窗口”（viewport）中，通常这个虚拟的”窗口”（viewport）比屏幕宽，这样就不用把每个网页挤到很小的窗口中（这样会破坏没有针对手机浏览器优化的网页的布局），用户可以通过平移和缩放来看网页的不同部分<br>下面是一个常用的针对移动网页优化过的页面的meta标签：</p>
-<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, height=device-height, initial-scale=1.0,minimum-scale=0.5,maximum-scale:5.0, user-scalable:true&quot;&gt;
-</code></pre><p>其中：</p>
-<ul>
-<li>width/heght：控制 viewport 的大小，可以指定的一个值，比如600;或者关键字，比如device-width</li>
-<li>initial-scale：初始缩放比例，也即是当页面第一次 load 的时候缩放比例</li>
-<li>maximum-scale：允许用户缩放到的最大比例</li>
-<li>minimum-scale：允许用户缩放到的最小比。</li>
-<li>user-scalable：用户是否可以手动缩放，默认为true</li>
-</ul>
-<h2 id="珊格视图"><a href="#珊格视图" class="headerlink" title="珊格视图"></a>珊格视图</h2><p>珊格其实是把视图根据比例分成等量宽度，根据设计时使用，事先</p>
-<pre><code>* {
-    box-sizing: border-box;
-}
-</code></pre><p>最常见的是将视区分为12份</p>
-<pre><code>.col-1 {width: 8.33%;}
-.col-2 {width: 16.66%;}
-.col-3 {width: 25%;}
-.col-4 {width: 33.33%;}
-.col-5 {width: 41.66%;}
-.col-6 {width: 50%;}
-.col-7 {width: 58.33%;}
-.col-8 {width: 66.66%;}
-.col-9 {width: 75%;}
-.col-10 {width: 83.33%;}
-.col-11 {width: 91.66%;}
-.col-12 {width: 100%;}
-
-[class*=&quot;col-&quot;] {
-    float: left;
-    padding: 15px;
-    border: 1px solid red;
-}
-</code></pre><p>使用：</p>
-<pre><code>&lt;header class=&quot;col-12&quot;&gt;手机展现&lt;/header&gt;
-&lt;aside class=&quot;col-3&quot;&gt;
-    &lt;ul&gt;
-        &lt;li onclick=&quot;selectMenu(1)&quot;&gt;Oppo&lt;/li&gt;
-        &lt;li onclick=&quot;selectMenu(2)&quot;&gt;Vivo&lt;/li&gt;
-        &lt;li onclick=&quot;selectMenu(3)&quot;&gt;小米&lt;/li&gt;
-    &lt;/ul&gt;
-&lt;/aside&gt;
-&lt;article id=&quot;oppo&quot; class=&quot;col-9&quot; style=&quot;display:block;&quot;&gt;
-    OPPO 更多年轻人选择的拍照手机
-&lt;/article&gt;
-&lt;footer class=&quot;col-12&quot;&gt;
-    &lt;details&gt;
-    &lt;summary&gt;Copyright 1999-2011.&lt;/summary&gt;
-    &lt;p&gt;by Refsnes Data. All Rights Reserved.&lt;/p&gt;
-    &lt;p&gt;datetime=&quot;2012-03-01&quot;.&lt;/p&gt;
-    &lt;/details&gt;
-&lt;/footer&gt;
-</code></pre><p>结合媒体查询，可以根据页面变化进行响应式设计，动态改变样式</p>
-<pre><code>@media only screen and (min-width: 800px) {
-    .col-1 {width: 8.33%;}
-    .col-2 {width: 16.66%;}
-    .col-3 {width: 25%;}
-    .col-4 {width: 33.33%;}
-    .col-5 {width: 41.66%;}
-    .col-6 {width: 50%;}
-    .col-7 {width: 58.33%;}
-    .col-8 {width: 66.66%;}
-    .col-9 {width: 75%;}
-    .col-10 {width: 83.33%;}
-    .col-11 {width: 91.66%;}
-    .col-12 {width: 100%;}
-    [class*=&quot;col-&quot;] {
-        float: left;
-        border: 0px solid red;
-    }
-}
-
-@media only screen and (max-width: 799px) {
-  [class*=&quot;col-&quot;] {
-      float: left;
-      border: 0px solid red;
-      width:100%;
-  }
-  article{
-      background:#ccff33;
-      padding:16px;
-      height:auto;
-  }
-}
-</code></pre><p>相应效果见demo: <a href="http://sandbox.runjs.cn/show/wj1h5jsf" target="_blank" rel="noopener">珊格</a></p>
+        <h2 id="bootShadow"><a href="#bootShadow" class="headerlink" title="bootShadow"></a>bootShadow</h2><p>  <a href="http://blueskyawen.com/boot-shadow/">bootShadow</a></p>
+<h2 id="ngCat"><a href="#ngCat" class="headerlink" title="ngCat"></a>ngCat</h2><p>  <a href="http://blueskyawen.com/ng-shadow-cat/">ngCat</a></p>
+<h2 id="Trip-爱彼迎"><a href="#Trip-爱彼迎" class="headerlink" title="Trip-爱彼迎"></a>Trip-爱彼迎</h2><p>  <a href="http://blueskyawen.com/ng-trip-aibiying/">Trip-爱彼迎</a></p>
+<h2 id="AngularCook"><a href="#AngularCook" class="headerlink" title="AngularCook"></a>AngularCook</h2><p>  <a href="http://blueskyawen.com/angular-work-cook/">AngularCook</a></p>
 
       
 
@@ -399,29 +235,7 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端//" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -471,7 +285,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://blueskyawen.com/2018/01/24/css3-modia/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://blueskyawen.com/projects/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -483,25 +297,6 @@
 </article>
 
   
-<nav id="article-nav">
-  
-    <a href="/2018/03/09/design-pattern-1/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          设计模式一
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/01/21/css3-flex/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">css3-Flex布局</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -520,27 +315,6 @@
 </aside>
 
 
-
-  
-  
-  
-  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-<script>
-  var cloudTieConfig = {
-    url: "http://blueskyawen.com/2018/01/24/css3-modia/", 
-    sourceId: "css3-modia",
-    productKey: "true",
-    target: "cloud-tie-wrapper"
-  };
-</script>
-<script src="//img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
-  
-
-  
-
-  
-
-  
 
 
           </div>
@@ -563,7 +337,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
