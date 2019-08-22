@@ -265,7 +265,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/16/vue-learn-in-minix/">Vue-详解混入和合并策略</a>
+      <a class="article-title" href="/2019/07/16/vue-learn-in-minix/">Vue-源码详解mixin混入和合并策略</a>
     </h1>
   
 
@@ -278,8 +278,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>待添加</p>
+        <style>
+.mixin-lizi {
+    margin-top: -30px;
+}
+.mixin-lizi figure {
+    max-height: 500px;
+}
+</style>
 
+<p>在vue里面，混入（mixin）是一种特殊的使用方式。一个混入对象可以包含任意的组件选项，可根据需求随意“封装”组件的可复用单元，并在使用时根据一定的策略合并到组件的选项当中，使用时与组件自身选项无异。<br>官方文档对mixin介绍比较少，不能了解甚少，于是便想研究下源码对它混入做个研究和总结</p>
+<blockquote>
+<p>本文基于Vue源码2.x版本  </p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2019/07/16/vue-learn-in-minix/#more">more >></a>
+        
       
 
       
@@ -292,7 +306,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
         		</li>
       		
 		</ul>
@@ -379,7 +393,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
         		</li>
       		
 		</ul>
@@ -1161,11 +1175,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">写作</a>
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+                <a href="javascript:void(0)" class="js-tag color3">写作</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1214,6 +1228,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">angular，plugin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
