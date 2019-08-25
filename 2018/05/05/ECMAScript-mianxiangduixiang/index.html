@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="bluesky个人小站">
 <meta property="og:description" content="javascript是一门面向对象的脚本语言，但又于传统的面向对象语言不同，它没有类的概念  然而，在js中，对象被声明为一种无序属性的集合，属性值可以是普通数据，子对象，和方法对象，于是通过一些技术手段，能够在js中实现面向对象的编程特性">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-14T17:41:37.359Z">
+<meta property="og:updated_time" content="2019-08-25T04:43:37.565Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript-面向对象">
 <meta name="twitter:description" content="javascript是一门面向对象的脚本语言，但又于传统的面向对象语言不同，它没有类的概念  然而，在js中，对象被声明为一种无序属性的集合，属性值可以是普通数据，子对象，和方法对象，于是通过一些技术手段，能够在js中实现面向对象的编程特性">
@@ -194,8 +194,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>javascript是一门面向对象的脚本语言，但又于传统的面向对象语言不同，它没有类的概念  然而，在js中，对象被声明为一种无序属性的集合，属性值可以是普通数据，子对象，和方法对象，于是通过一些技术手段，能够在js中实现面向对象的编程特性<br><a id="more"></a></p>
-<h2 id="1-对象"><a href="#1-对象" class="headerlink" title="1 对象"></a>1 对象</h2><p>在ECMAScript里，对象的概念在我理解来说，可以类似于传统面向对象编程语言的“类”，而实例化出的多个实体叫对象实例<br>构建对象的方法很多，介绍几种常用的方法以及使用场景</p>
-<h4 id="1-1-原始方式"><a href="#1-1-原始方式" class="headerlink" title="1.1 原始方式"></a>1.1 原始方式</h4><p>通过原始对象Object直接构造,比较粗暴,实际上得到的是一个对象实例</p>
+<h1 id="1-对象"><a href="#1-对象" class="headerlink" title="1 对象"></a>1 对象</h1><p>在ECMAScript里，对象的概念在我理解来说，可以类似于传统面向对象编程语言的“类”，而实例化出的多个实体叫对象实例<br>构建对象的方法很多，介绍几种常用的方法以及使用场景</p>
+<h2 id="1-原始方式"><a href="#1-原始方式" class="headerlink" title="1) 原始方式"></a>1) 原始方式</h2><p>通过原始对象Object直接构造,比较粗暴,实际上得到的是一个对象实例</p>
 <pre><code>var animal = new Object();
 animal.type = &quot;dog&quot;;
 animal.name = &quot;wangcai&quot;;
@@ -205,7 +205,7 @@ animal.display = function() {
 
 animal.display();
 //I am a dog，my name is wangcai
-</code></pre><h4 id="1-2-字面量对象"><a href="#1-2-字面量对象" class="headerlink" title="1.2 字面量对象"></a>1.2 字面量对象</h4><p>同上，实际上得到的是一个对象实例，可用于简单的临时对象使用或放回值等</p>
+</code></pre><h2 id="2-字面量对象"><a href="#2-字面量对象" class="headerlink" title="2) 字面量对象"></a>2) 字面量对象</h2><p>同上，实际上得到的是一个对象实例，可用于简单的临时对象使用或放回值等</p>
 <pre><code>var animal = {
     type: &quot;dog&quot;,
     name: &quot;wangcai&quot;,
@@ -216,7 +216,7 @@ animal.display();
 
 animal.display();
 //I am a dog，my name is wangcai
-</code></pre><h4 id="1-3-工厂方法"><a href="#1-3-工厂方法" class="headerlink" title="1.3 工厂方法"></a>1.3 工厂方法</h4><p>简单工厂，封装对象构造过程</p>
+</code></pre><h2 id="3-工厂方法"><a href="#3-工厂方法" class="headerlink" title="3) 工厂方法"></a>3) 工厂方法</h2><p>简单工厂，封装对象构造过程</p>
 <pre><code>function getAnimal(type,name) {
     var animal = new Object()
     animal.type = &quot;dog&quot;;
@@ -230,7 +230,7 @@ animal.display();
 var dog = getAnimal(&quot;dog&quot;,&quot;wangcai&quot;);
 dog.display();
 //I am a dog，my name is wangcai
-</code></pre><h4 id="1-4-构造函数方法"><a href="#1-4-构造函数方法" class="headerlink" title="1.4 构造函数方法"></a>1.4 构造函数方法</h4><p>在js中由于函数本身其实是对象，对象是属性集合，故可以使用函数作为“构造函数”来模拟对象创建</p>
+</code></pre><h2 id="4-构造函数方法"><a href="#4-构造函数方法" class="headerlink" title="4) 构造函数方法"></a>4) 构造函数方法</h2><p>在js中由于函数本身其实是对象，对象是属性集合，故可以使用函数作为“构造函数”来模拟对象创建</p>
 <pre><code>function Animal(type,name) {
     this.type = type;
     this.name = name;
@@ -243,7 +243,7 @@ var dog = new Animal(&apos;dog&apos;,&apos;wangcai&apos;);
 dog.display();
 //I am a dog，my name is wangcai
 </code></pre><p>这种方式特别简单，使用起来也比较像传统的面向对象类的用法，但缺点就是每个对象实例都会创建各自的方法对象，比较消耗内存，这是和类不一样的，我们知道类的函数是保存在堆上的，又实例共享</p>
-<h4 id="1-5-原型方法"><a href="#1-5-原型方法" class="headerlink" title="1.5 原型方法"></a>1.5 原型方法</h4><p>为了解决构造函数的内存问题，引入原型方式<br>在js中，每创建一个函数，会自动创建一个prototype属性指针，指向同时引入的函数的原型对象，这个原型对象保存在堆中，存储公共的属性和方法<br>当使用这个函数创建实例的时候会复制对象的prototype属性，所以每个对象实例都指向同一个原型对象</p>
+<h2 id="5-原型方法"><a href="#5-原型方法" class="headerlink" title="5) 原型方法"></a>5) 原型方法</h2><p>为了解决构造函数的内存问题，引入原型方式<br>在js中，每创建一个函数，会自动创建一个prototype属性指针，指向同时引入的函数的原型对象，这个原型对象保存在堆中，存储公共的属性和方法<br>当使用这个函数创建实例的时候会复制对象的prototype属性，所以每个对象实例都指向同一个原型对象</p>
 <pre><code>function Animal() {}
 
 Animal.prototype.type = &apos;dog&apos;;
@@ -280,7 +280,7 @@ console.log(animal3.name);   // wangcai
 <li>Object.keys()或者可遍历属性名</li>
 </ul>
 <p>原型方式的缺点很明显，既然属性是实例共享的，当某一实例改变了属性值会立刻体现到所有实例上，尤其是对引用型变量的改变，这往往是不被希望的</p>
-<h4 id="1-6-构造函数-原型混合"><a href="#1-6-构造函数-原型混合" class="headerlink" title="1.6 构造函数-原型混合"></a>1.6 构造函数-原型混合</h4><p>结合上面两个方式的优点，使用构造函数保存多变属性，使用原型保存共享属性/方法，混合方式也是使用最多的</p>
+<h2 id="6-构造函数-原型混合"><a href="#6-构造函数-原型混合" class="headerlink" title="6) 构造函数-原型混合"></a>6) 构造函数-原型混合</h2><p>结合上面两个方式的优点，使用构造函数保存多变属性，使用原型保存共享属性/方法，混合方式也是使用最多的</p>
 <pre><code>function Animal(type,name) {
     this.type = type;
     this.name = name;
@@ -307,7 +307,7 @@ cat.display();
 cat.dump();
 // I am a cat，my name is jiafei
 // I am jiafei , i have 2 eyes.
-</code></pre><h4 id="1-7-工厂-构造函数混合"><a href="#1-7-工厂-构造函数混合" class="headerlink" title="1.7 工厂-构造函数混合"></a>1.7 工厂-构造函数混合</h4><p>使用工厂方式，和装饰器模式来构造</p>
+</code></pre><h2 id="7-工厂-构造函数混合"><a href="#7-工厂-构造函数混合" class="headerlink" title="7) 工厂-构造函数混合"></a>7) 工厂-构造函数混合</h2><p>使用工厂方式，和装饰器模式来构造</p>
 <pre><code>function Animal(type,name) {
     var animal = new Object()
     animal.type = &quot;dog&quot;;
@@ -319,8 +319,8 @@ cat.dump();
 }
 
 var dog = new Animal(&apos;dog&apos;,&apos;wangcai&apos;);
-</code></pre><h3 id="2-继承"><a href="#2-继承" class="headerlink" title="2 继承"></a>2 继承</h3><p>在js中没有真正意义上的继承，主要依靠原型链的替换来实现“继承”的特性，再加上对象组合增强等设计方法，来优化实现</p>
-<h5 id="2-1-原型链替换"><a href="#2-1-原型链替换" class="headerlink" title="2.1 原型链替换"></a>2.1 原型链替换</h5><p>这种方式其实很简单，想想之前说的原型链，对象和对象实例都通过prototype指针指向堆上的原型对象，所以通过指针实现原型链搜索来访问原型的属性<br><strong><em>如果把prototype指针替换成“父对象”的实例，这个子对象实例便可以通过自身的prototype访问“父对象实例”的属性，同时通过“父对象实例”的prototype访问“父对象”的原型属性，间接实现继承</em></strong><br>可以通过不断替换prototype属性多级继承</p>
+</code></pre><h1 id="2-继承"><a href="#2-继承" class="headerlink" title="2 继承"></a>2 继承</h1><p>在js中没有真正意义上的继承，主要依靠原型链的替换来实现“继承”的特性，再加上对象组合增强等设计方法，来优化实现</p>
+<h2 id="1-原型链替换"><a href="#1-原型链替换" class="headerlink" title="1) 原型链替换"></a>1) 原型链替换</h2><p>这种方式其实很简单，想想之前说的原型链，对象和对象实例都通过prototype指针指向堆上的原型对象，所以通过指针实现原型链搜索来访问原型的属性<br><strong><em>如果把prototype指针替换成“父对象”的实例，这个子对象实例便可以通过自身的prototype访问“父对象实例”的属性，同时通过“父对象实例”的prototype访问“父对象”的原型属性，间接实现继承</em></strong><br>可以通过不断替换prototype属性多级继承</p>
 <pre><code>function Animal(type,name) {
     this.type = type;
     this.name = name;
@@ -356,7 +356,7 @@ dog.dump();
         alert(&quot;I am a &quot; + this.type + &quot;,my color is &quot; + this.color);
 };
 </code></pre><p>在调用时会根据原型链来查找属性变量，先子对象 –&gt; 父对象 –&gt; …,当然这不是好的设计方式，在此只是为了说明而已<br>与原型方式的对象方式一样，有着原型属性共享的问题，当其他继承者修改了“父对象”的属性时，将会反映在所有子类，即使设计时不是这样的</p>
-<h5 id="2-2-仿冒子对象"><a href="#2-2-仿冒子对象" class="headerlink" title="2.2 仿冒子对象"></a>2.2 仿冒子对象</h5><p>利用函数的call()或apply()方法，在子对象的构造函数中直接调用执行“父对象”函数，并传入子对象的指针，间接使子对象继承了父对象的属性，且实例之间相互独立，类似于“组合模式”</p>
+<h2 id="2-仿冒子对象"><a href="#2-仿冒子对象" class="headerlink" title="2) 仿冒子对象"></a>2) 仿冒子对象</h2><p>利用函数的call()或apply()方法，在子对象的构造函数中直接调用执行“父对象”函数，并传入子对象的指针，间接使子对象继承了父对象的属性，且实例之间相互独立，类似于“组合模式”</p>
 <pre><code>function Animal(type,name) {
     this.type = type;
     this.name = name;
@@ -396,7 +396,7 @@ Dog.prototype.dump = function() {
     alert(&quot;I am &quot; + this.name + &quot;,color is &quot; + this.color);
 }
 </code></pre><p>可以看到，这种方式实际上是在子对像内部实例化“父类”的一个副本，增加内存负担，没有什么共享可言</p>
-<h5 id="2-3-原型链-仿冒混合"><a href="#2-3-原型链-仿冒混合" class="headerlink" title="2.3 原型链-仿冒混合"></a>2.3 原型链-仿冒混合</h5><p>和对象构建类似，也可以通过混合使用原型链和仿冒对象来获取各自的优点</p>
+<h2 id="3-原型链-仿冒混合"><a href="#3-原型链-仿冒混合" class="headerlink" title="3) 原型链-仿冒混合"></a>3) 原型链-仿冒混合</h2><p>和对象构建类似，也可以通过混合使用原型链和仿冒对象来获取各自的优点</p>
 <pre><code>function Animal(type,name) {
     this.type = type;
     this.name = name;
@@ -420,7 +420,7 @@ dog.display();
 //I am a dog,my name is KA
 dog.dump();
 //I am KA,color is black
-</code></pre><h5 id="2-4-原型式"><a href="#2-4-原型式" class="headerlink" title="2.4 原型式"></a>2.4 原型式</h5><p>这个其实就是将原型链的实现进行“工厂化”，传入父对象，隐藏继承的实现</p>
+</code></pre><h2 id="4-原型式"><a href="#4-原型式" class="headerlink" title="4) 原型式"></a>4) 原型式</h2><p>这个其实就是将原型链的实现进行“工厂化”，传入父对象，隐藏继承的实现</p>
 <pre><code>function Animal(type,name) {
     this.type = type;
     this.name = name;
@@ -478,7 +478,7 @@ dog.display();
 dog.dump();
 // I am a dog，my name is wangwang
 // wangwang@BLUE
-</code></pre><h5 id="2-5-寄生式"><a href="#2-5-寄生式" class="headerlink" title="2.5 寄生式"></a>2.5 寄生式</h5><p>这种方式我的理解其实就是在原型式基础上进一步进行了工厂包装</p>
+</code></pre><h2 id="5-寄生式"><a href="#5-寄生式" class="headerlink" title="5) 寄生式"></a>5) 寄生式</h2><p>这种方式我的理解其实就是在原型式基础上进一步进行了工厂包装</p>
 <pre><code>function Animal(type,name) {
     this.type = type;
     this.name = name;
@@ -499,7 +499,7 @@ function GetAnimal(super_o,color) {
 var dog = GetAnimal(new Animal(&apos;dog&apos;,&apos;wangwang&apos;),&apos;BLUE&apos;);
 dog.display();
 dog.dump();
-</code></pre><h5 id="2-6-寄生组合式"><a href="#2-6-寄生组合式" class="headerlink" title="2.6 寄生组合式"></a>2.6 寄生组合式</h5><p>寄生组合方式也是原型/寄生/构造函数等的组合应用，只是create子对象不是使用父对象实例，而是使用父对象的原型作为入参</p>
+</code></pre><h2 id="6-寄生组合式"><a href="#6-寄生组合式" class="headerlink" title="6) 寄生组合式"></a>6) 寄生组合式</h2><p>寄生组合方式也是原型/寄生/构造函数等的组合应用，只是create子对象不是使用父对象实例，而是使用父对象的原型作为入参</p>
 <pre><code>function GetAnimal(super_o,color) {
     var sub = Object.create(super_o.prototype);
     sub.color = color;
@@ -671,7 +671,7 @@ dog.dump();
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-对象"><span class="toc-number">1.</span> <span class="toc-text">1 对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-原始方式"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.1 原始方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-字面量对象"><span class="toc-number">1.0.2.</span> <span class="toc-text">1.2 字面量对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-工厂方法"><span class="toc-number">1.0.3.</span> <span class="toc-text">1.3 工厂方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-构造函数方法"><span class="toc-number">1.0.4.</span> <span class="toc-text">1.4 构造函数方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-原型方法"><span class="toc-number">1.0.5.</span> <span class="toc-text">1.5 原型方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-6-构造函数-原型混合"><span class="toc-number">1.0.6.</span> <span class="toc-text">1.6 构造函数-原型混合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-7-工厂-构造函数混合"><span class="toc-number">1.0.7.</span> <span class="toc-text">1.7 工厂-构造函数混合</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-继承"><span class="toc-number">1.1.</span> <span class="toc-text">2 继承</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-1-原型链替换"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">2.1 原型链替换</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-仿冒子对象"><span class="toc-number">1.1.0.2.</span> <span class="toc-text">2.2 仿冒子对象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-原型链-仿冒混合"><span class="toc-number">1.1.0.3.</span> <span class="toc-text">2.3 原型链-仿冒混合</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-4-原型式"><span class="toc-number">1.1.0.4.</span> <span class="toc-text">2.4 原型式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-5-寄生式"><span class="toc-number">1.1.0.5.</span> <span class="toc-text">2.5 寄生式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-6-寄生组合式"><span class="toc-number">1.1.0.6.</span> <span class="toc-text">2.6 寄生组合式</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-对象"><span class="toc-number">1.</span> <span class="toc-text">1 对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-原始方式"><span class="toc-number">1.1.</span> <span class="toc-text">1) 原始方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-字面量对象"><span class="toc-number">1.2.</span> <span class="toc-text">2) 字面量对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-工厂方法"><span class="toc-number">1.3.</span> <span class="toc-text">3) 工厂方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-构造函数方法"><span class="toc-number">1.4.</span> <span class="toc-text">4) 构造函数方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-原型方法"><span class="toc-number">1.5.</span> <span class="toc-text">5) 原型方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-构造函数-原型混合"><span class="toc-number">1.6.</span> <span class="toc-text">6) 构造函数-原型混合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-工厂-构造函数混合"><span class="toc-number">1.7.</span> <span class="toc-text">7) 工厂-构造函数混合</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-继承"><span class="toc-number">2.</span> <span class="toc-text">2 继承</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-原型链替换"><span class="toc-number">2.1.</span> <span class="toc-text">1) 原型链替换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-仿冒子对象"><span class="toc-number">2.2.</span> <span class="toc-text">2) 仿冒子对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-原型链-仿冒混合"><span class="toc-number">2.3.</span> <span class="toc-text">3) 原型链-仿冒混合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-原型式"><span class="toc-number">2.4.</span> <span class="toc-text">4) 原型式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-寄生式"><span class="toc-number">2.5.</span> <span class="toc-text">5) 寄生式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-寄生组合式"><span class="toc-number">2.6.</span> <span class="toc-text">6) 寄生组合式</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>

@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://blueskyawen.com/images/zujianyangshi.png">
 <meta property="og:image" content="http://blueskyawen.com/images/zujianyangshi2.png">
 <meta property="og:image" content="http://blueskyawen.com/images/zujianyangshi3.png">
-<meta property="og:updated_time" content="2019-02-14T17:41:37.345Z">
+<meta property="og:updated_time" content="2019-08-25T03:48:38.059Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular-组件样式表">
 <meta name="twitter:description" content="在angular应用中可以使用所有的CSS样式来修饰我们的模板元素，渲染我们的页面，还可以把样式的有效范围限制在组件模板中">
@@ -198,7 +198,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>在angular应用中可以使用所有的CSS样式来修饰我们的模板元素，渲染我们的页面，还可以把样式的有效范围限制在组件模板中<br><a id="more"></a></p>
-<h2 id="样式在组件的使用方式"><a href="#样式在组件的使用方式" class="headerlink" title="样式在组件的使用方式"></a>样式在组件的使用方式</h2><h5 id="（1）在模板中直接使用"><a href="#（1）在模板中直接使用" class="headerlink" title="（1）在模板中直接使用"></a>（1）在模板中直接使用</h5><pre><code>//外联样式文件
+<h1 id="样式在组件的使用方式"><a href="#样式在组件的使用方式" class="headerlink" title="样式在组件的使用方式"></a>样式在组件的使用方式</h1><h2 id="（1）在模板中直接使用"><a href="#（1）在模板中直接使用" class="headerlink" title="（1）在模板中直接使用"></a>（1）在模板中直接使用</h2><pre><code>//外联样式文件
 &lt;link src=&quot;common.css&quot;&gt;
 
 //模板内样式
@@ -211,7 +211,7 @@ h1 {
 
 //元素内联样式
 &lt;div style=&quot;display:inline;&quot;&gt;&lt;/div&gt;
-</code></pre><h5 id="（2）在组件元数据配置"><a href="#（2）在组件元数据配置" class="headerlink" title="（2）在组件元数据配置"></a>（2）在组件元数据配置</h5><pre><code>//通过URL路径加载CSS文件
+</code></pre><h2 id="（2）在组件元数据配置"><a href="#（2）在组件元数据配置" class="headerlink" title="（2）在组件元数据配置"></a>（2）在组件元数据配置</h2><pre><code>//通过URL路径加载CSS文件
 @Component({
   selector: &apos;app-root&apos;,
   styleUrls: [&apos;./app.component.css&apos;]
@@ -232,7 +232,7 @@ h1 {
 <blockquote>
 <p>这几种方式可以同时声明在元数据中，但后声明的同类样式会覆盖前面，所以，为清晰起见，建议只使用一种</p>
 </blockquote>
-<h2 id="样式限定范围在组件"><a href="#样式限定范围在组件" class="headerlink" title="样式限定范围在组件"></a>样式限定范围在组件</h2><p>angular默认采用Emulated仿真式模式来设置组件元数据的视图封装模式<br>仿真式模式，是通过预处理CSS 代码来模拟Shadow DOM的行为，把CSS 样式的有效范围局限在组件视图中。就是“只进不出”，全局样式能够在组件模板中使用生效，但本组件的CSS样式不能正常在组件外部使用<br>究其内部，其实只是angular对组件的CSS/模板进行预处理后，在组件模板元素上添加特定的属性，并且同时在CSS也添加相应的属性，来达到限制范围在目的，比如：</p>
+<h1 id="样式限定范围在组件"><a href="#样式限定范围在组件" class="headerlink" title="样式限定范围在组件"></a>样式限定范围在组件</h1><p>angular默认采用Emulated仿真式模式来设置组件元数据的视图封装模式<br>仿真式模式，是通过预处理CSS 代码来模拟Shadow DOM的行为，把CSS 样式的有效范围局限在组件视图中。就是“只进不出”，全局样式能够在组件模板中使用生效，但本组件的CSS样式不能正常在组件外部使用<br>究其内部，其实只是angular对组件的CSS/模板进行预处理后，在组件模板元素上添加特定的属性，并且同时在CSS也添加相应的属性，来达到限制范围在目的，比如：</p>
 <pre><code>//appComponen.ts
 @Component({
     selector: &apos;app-root&apos;,
@@ -257,7 +257,7 @@ export class AppComponent {
     color: red;
 }
 </code></pre><p>运行应用偶打开浏览器查看元素<br><img src="/images/zujianyangshi.png" alt="zujianyangshi"></p>
-<h2 id="特殊选择器"><a href="#特殊选择器" class="headerlink" title="特殊选择器"></a>特殊选择器</h2><p><strong>（1）:host {}</strong><br>表示组件的宿主元素，以宿主元素的属性来控制本组件模板内的样式表现，但是不能控制宿主的样式，比如组件Logincomponent的元数据如下：</p>
+<h1 id="特殊选择器"><a href="#特殊选择器" class="headerlink" title="特殊选择器"></a>特殊选择器</h1><p><strong>（1）:host {}</strong><br>表示组件的宿主元素，以宿主元素的属性来控制本组件模板内的样式表现，但是不能控制宿主的样式，比如组件Logincomponent的元数据如下：</p>
 <pre><code>//logincomponent.ts
 import { Component, OnInit } from &apos;@angular/core&apos;;
 @Component({
@@ -469,7 +469,7 @@ export class LoginComponent implements OnInit {
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#样式在组件的使用方式"><span class="toc-number">1.</span> <span class="toc-text">样式在组件的使用方式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#（1）在模板中直接使用"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">（1）在模板中直接使用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#（2）在组件元数据配置"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">（2）在组件元数据配置</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#样式限定范围在组件"><span class="toc-number">2.</span> <span class="toc-text">样式限定范围在组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特殊选择器"><span class="toc-number">3.</span> <span class="toc-text">特殊选择器</span></a></li>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#样式在组件的使用方式"><span class="toc-number">1.</span> <span class="toc-text">样式在组件的使用方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#（1）在模板中直接使用"><span class="toc-number">1.1.</span> <span class="toc-text">（1）在模板中直接使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（2）在组件元数据配置"><span class="toc-number">1.2.</span> <span class="toc-text">（2）在组件元数据配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#样式限定范围在组件"><span class="toc-number">2.</span> <span class="toc-text">样式限定范围在组件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#特殊选择器"><span class="toc-number">3.</span> <span class="toc-text">特殊选择器</span></a></li></ol>
                     </div>
                 </span>
             </div>

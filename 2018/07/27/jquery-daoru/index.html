@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="bluesky个人小站">
 <meta property="og:description" content="JQurey是一个javascript库，用与简化开发人员的工作，感兴趣的同学可进一步去学习和使用">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-14T17:41:37.360Z">
+<meta property="og:updated_time" content="2019-08-25T04:46:14.223Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JQuery">
 <meta name="twitter:description" content="JQurey是一个javascript库，用与简化开发人员的工作，感兴趣的同学可进一步去学习和使用">
@@ -194,7 +194,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>JQurey是一个javascript库，用与简化开发人员的工作，感兴趣的同学可进一步去学习和使用<br><a id="more"></a></p>
-<h3 id="JQurey的特点"><a href="#JQurey的特点" class="headerlink" title="JQurey的特点"></a>JQurey的特点</h3><p>简化js操作文档的复杂度，写的更少，做的更多，这得益于jqurey的几大特点：</p>
+<h1 id="JQurey的特点"><a href="#JQurey的特点" class="headerlink" title="JQurey的特点"></a>JQurey的特点</h1><p>简化js操作文档的复杂度，写的更少，做的更多，这得益于jqurey的几大特点：</p>
 <ul>
 <li>集合操作，大部分的元素操作都是集合操作，比如：$(“p”)就是p元素的集合</li>
 <li>链式写法，对元素的操作无限叠加，典型的函数式编程<br>$(“p”).addClass(“active”)…</li>
@@ -205,12 +205,12 @@
 <pre><code>$(&quot;p&quot;).removeClass(&quot;BBB&quot;).filter(&quot;.AAA&quot;)
     .addClass(&quot;active&quot;)
     .click(function() {...});
-</code></pre><h3 id="关于"><a href="#关于" class="headerlink" title="关于$"></a>关于$</h3><p>$符号是JQurey的标志，所有的jq操作都已$开始，就连开发者对JQurey对象的命名也是以$开头，比如：</p>
+</code></pre><h1 id="关于"><a href="#关于" class="headerlink" title="关于$"></a>关于$</h1><p>$符号是JQurey的标志，所有的jq操作都已$开始，就连开发者对JQurey对象的命名也是以$开头，比如：</p>
 <pre><code>var $volume = $(&quot;p&quot;);
 </code></pre><p>$只是JQurey的代号，使用$的地方都可以使用JQurey代替，比如：</p>
 <pre><code>$(&quot;p&quot;) 同 JQurey(&quot;p&quot;)
 $.ajax() 同 JQurey.ajax()
-</code></pre><h3 id="JQurey对象和Dom对象"><a href="#JQurey对象和Dom对象" class="headerlink" title="JQurey对象和Dom对象"></a>JQurey对象和Dom对象</h3><p>JQurey是对js操作的封装库，JQurey对象自然也是Dom对象的封装，两种可以相互转换<br>Dom对象 –&gt; JQ对象：</p>
+</code></pre><h1 id="JQurey对象和Dom对象"><a href="#JQurey对象和Dom对象" class="headerlink" title="JQurey对象和Dom对象"></a>JQurey对象和Dom对象</h1><p>JQurey是对js操作的封装库，JQurey对象自然也是Dom对象的封装，两种可以相互转换<br>Dom对象 –&gt; JQ对象：</p>
 <pre><code>var cr=document.getElementByid(&quot;aa&quot;);
 var $cr = $(cr);
 </code></pre><p>JQ对象 –&gt; Dom对象：</p>
@@ -221,12 +221,12 @@ var cr = $cr[0] 或 $cr.get(0)
 if($cr[0]) {
     alert(&apos;页面没有这个元素&apos;);
 }
-</code></pre><h3 id="JQurey的核心操作"><a href="#JQurey的核心操作" class="headerlink" title="JQurey的核心操作"></a>JQurey的核心操作</h3><p>JQurey的核心操作，我觉得就是三个方面的内容：</p>
+</code></pre><h1 id="JQurey的核心操作"><a href="#JQurey的核心操作" class="headerlink" title="JQurey的核心操作"></a>JQurey的核心操作</h1><p>JQurey的核心操作，我觉得就是三个方面的内容：</p>
 <ul>
 <li>元素获取</li>
 <li>元素操作</li>
 </ul>
-<h6 id="1-元素获取"><a href="#1-元素获取" class="headerlink" title="1 元素获取"></a>1 元素获取</h6><p>主要通过选择器和各种遍历方法来获取元素的个体或集合，比如：</p>
+<h2 id="1-元素获取"><a href="#1-元素获取" class="headerlink" title="1) 元素获取"></a>1) 元素获取</h2><p>主要通过选择器和各种遍历方法来获取元素的个体或集合，比如：</p>
 <pre><code>$(&quot;p&quot;)
 $(&quot;div &gt; span.classA&quot;)
 
@@ -243,7 +243,7 @@ $(&quot;div&quot;).children();
     &lt;/div&gt;
 &lt;/table&gt;
 </code></pre><p>使用$(”table div input“)无法匹配到input元素,但是$(”div input“)可以</p>
-<h6 id="2-元素操作"><a href="#2-元素操作" class="headerlink" title="2 元素操作"></a>2 元素操作</h6><p>（1）事件、动画的添加</p>
+<h2 id="2-元素操作"><a href="#2-元素操作" class="headerlink" title="2) 元素操作"></a>2) 元素操作</h2><p>（1）事件、动画的添加</p>
 <pre><code>$(&quot;p&quot;).click(function() {
     alert(&quot;click it!!&quot;);
 });
@@ -298,7 +298,7 @@ $(&quot;div input&quot;).val();
 $(&quot;div input#name&quot;).val(&quot;jack&quot;);
 </code></pre><p><strong>标签包裹</strong>，add</p>
 <pre><code>$(&quot;p span&quot;).wrap(&quot;&lt;div&gt;&lt;/div&gt;&quot;);
-</code></pre><h3 id="3-Ajax"><a href="#3-Ajax" class="headerlink" title="3 Ajax"></a>3 Ajax</h3><p>javascript中的ajax书写复杂，而且在不同浏览器之间有差异，开发者要详细考虑兼容各个浏览器的写法<br>在JQuery中，封装了这种差异，提供了统一的ajax方法，简单易用</p>
+</code></pre><h1 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h1><p>javascript中的ajax书写复杂，而且在不同浏览器之间有差异，开发者要详细考虑兼容各个浏览器的写法<br>在JQuery中，封装了这种差异，提供了统一的ajax方法，简单易用</p>
 <p><strong>$().load()</strong><br>对象方法，load方法可根据url直接加载页面并添加到指定元素中，也可加载目标页面的部分元素</p>
 <pre><code>$(selector).load(url,[data],[callback])
 </code></pre><p>其中url为加载地址，data为可选入参数据，callback为可选加载完成的回调函数</p>
@@ -512,7 +512,7 @@ $(&quot;button.send&quot;).click(function() {
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#JQurey的特点"><span class="toc-number">1.</span> <span class="toc-text">JQurey的特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于"><span class="toc-number">2.</span> <span class="toc-text">关于$</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JQurey对象和Dom对象"><span class="toc-number">3.</span> <span class="toc-text">JQurey对象和Dom对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JQurey的核心操作"><span class="toc-number">4.</span> <span class="toc-text">JQurey的核心操作</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-元素获取"><span class="toc-number">4.0.0.1.</span> <span class="toc-text">1 元素获取</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#2-元素操作"><span class="toc-number">4.0.0.2.</span> <span class="toc-text">2 元素操作</span></a></li></ol></li></ol><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Ajax"><span class="toc-number">5.</span> <span class="toc-text">3 Ajax</span></a></li>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JQurey的特点"><span class="toc-number">1.</span> <span class="toc-text">JQurey的特点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于"><span class="toc-number">2.</span> <span class="toc-text">关于$</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JQurey对象和Dom对象"><span class="toc-number">3.</span> <span class="toc-text">JQurey对象和Dom对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JQurey的核心操作"><span class="toc-number">4.</span> <span class="toc-text">JQurey的核心操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-元素获取"><span class="toc-number">4.1.</span> <span class="toc-text">1) 元素获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-元素操作"><span class="toc-number">4.2.</span> <span class="toc-text">2) 元素操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ajax"><span class="toc-number">5.</span> <span class="toc-text">Ajax</span></a></li></ol>
                     </div>
                 </span>
             </div>

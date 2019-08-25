@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="bluesky个人小站">
 <meta property="og:description" content="本节介绍几种结构型模式，看着比较相似，比较容易混淆，在此描述希望有所区分">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-14T17:41:37.358Z">
+<meta property="og:updated_time" content="2019-08-25T04:36:50.125Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式三">
 <meta name="twitter:description" content="本节介绍几种结构型模式，看着比较相似，比较容易混淆，在此描述希望有所区分">
@@ -194,7 +194,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>本节介绍几种结构型模式，看着比较相似，比较容易混淆，在此描述希望有所区分<br><a id="more"></a></p>
-<h3 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h3><p>装饰器模式主要是为了复用现有对象和类，在不修改现有类的前提下添加新功能。<br>一般扩展类功能通常采用继承来实现，而装饰器可直接扩展新功能，防止继承造成的子类膨胀<br>下面以X战警的例子来举个例子，X-man是变异人，是在普通人类的基础上拥有特殊能力的一类人：</p>
+<h1 id="装饰器模式"><a href="#装饰器模式" class="headerlink" title="装饰器模式"></a>装饰器模式</h1><p>装饰器模式主要是为了复用现有对象和类，在不修改现有类的前提下添加新功能。<br>一般扩展类功能通常采用继承来实现，而装饰器可直接扩展新功能，防止继承造成的子类膨胀<br>下面以X战警的例子来举个例子，X-man是变异人，是在普通人类的基础上拥有特殊能力的一类人：</p>
 <pre><code>class Person {
     string name;
 
@@ -275,7 +275,7 @@ int main() {
     wolverine.display();
 }
 </code></pre><p>输出：<br>===名字：暴风女<br>技能 ： 操纵雷电; 操纵暴风; 操纵龙卷风;<br>===名字：镭射眼<br>技能 ： 发射冲击波;<br>===名字：金刚狼<br>技能 ： 延缓衰老; 自愈; 金刚爪;</p>
-<h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><p>代理模式是新增代理类来对基础类进行访问控制的一种设计手段，由代理类提供调用接口，隐藏基础类的直接访问，此外还可以完成其他事物处理，包括：</p>
+<h1 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h1><p>代理模式是新增代理类来对基础类进行访问控制的一种设计手段，由代理类提供调用接口，隐藏基础类的直接访问，此外还可以完成其他事物处理，包括：</p>
 <ul>
 <li>隐藏基础类访问的复杂性</li>
 <li>控制外部用户对基础类的直接访问，比如：进行访问算法优化</li>
@@ -504,7 +504,7 @@ int main() {
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#装饰器模式"><span class="toc-number">1.</span> <span class="toc-text">装饰器模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代理模式"><span class="toc-number">2.</span> <span class="toc-text">代理模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#外观模式"><span class="toc-number">3.</span> <span class="toc-text">外观模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代理模式-1"><span class="toc-number">4.</span> <span class="toc-text">代理模式</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#装饰器模式"><span class="toc-number">1.</span> <span class="toc-text">装饰器模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代理模式"><span class="toc-number">2.</span> <span class="toc-text">代理模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#外观模式"><span class="toc-number">2.0.1.</span> <span class="toc-text">外观模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代理模式-1"><span class="toc-number">2.0.2.</span> <span class="toc-text">代理模式</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>

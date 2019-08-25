@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="bluesky个人小站">
 <meta property="og:description" content="在应用组件过程中，很多时候需要不同的组件之间进行数据共享，或者数据通讯，尤其的父子组件之间，angular提供了几种典型的方式完成这类需求">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-14T17:41:37.349Z">
+<meta property="og:updated_time" content="2019-08-25T04:21:31.494Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular-组件通信">
 <meta name="twitter:description" content="在应用组件过程中，很多时候需要不同的组件之间进行数据共享，或者数据通讯，尤其的父子组件之间，angular提供了几种典型的方式完成这类需求">
@@ -194,14 +194,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>在应用组件过程中，很多时候需要不同的组件之间进行数据共享，或者数据通讯，尤其的父子组件之间，angular提供了几种典型的方式完成这类需求<br><a id="more"></a></p>
-<h3 id="输入变量"><a href="#输入变量" class="headerlink" title="输入变量"></a>输入变量</h3><p>通过@Input()声明输入变量，来进行父组件对子组件的数据输入</p>
+<h1 id="输入变量"><a href="#输入变量" class="headerlink" title="输入变量"></a>输入变量</h1><p>通过@Input()声明输入变量，来进行父组件对子组件的数据输入</p>
 <pre><code>import { Component, Input } from &apos;@angular/core&apos;;
 
 export class HeroChildComponent {
   @Input() hero: Hero;
   @Input(&apos;master&apos;) masterName: string; //定义别名
 }
-</code></pre><h3 id="setter和getter"><a href="#setter和getter" class="headerlink" title="setter和getter"></a>setter和getter</h3><p>使用一个输入属性的setter，可以拦截父组件中值的变化，并进行相关处理；使用getter，又可以将处理之后的数据返回给调用者</p>
+</code></pre><h1 id="setter和getter"><a href="#setter和getter" class="headerlink" title="setter和getter"></a>setter和getter</h1><p>使用一个输入属性的setter，可以拦截父组件中值的变化，并进行相关处理；使用getter，又可以将处理之后的数据返回给调用者</p>
 <pre><code>import { Component, Input } from &apos;@angular/core&apos;;
 
 export class NameChildComponent {
@@ -214,7 +214,7 @@ export class NameChildComponent {
 
   get name(): string { return this._name + ‘AAA’; }
 }
-</code></pre><h3 id="OnChanges"><a href="#OnChanges" class="headerlink" title="OnChanges"></a>OnChanges</h3><p>使用OnChanges生命周期钩子接口的ngOnChanges()方法来监测输入属性值的变化并做出回应</p>
+</code></pre><h1 id="OnChanges"><a href="#OnChanges" class="headerlink" title="OnChanges"></a>OnChanges</h1><p>使用OnChanges生命周期钩子接口的ngOnChanges()方法来监测输入属性值的变化并做出回应</p>
 <blockquote>
 <p>注意，此方法只能检测纯变量的输入变化，不能检测结构型变量（比如：数据/对象等）内容的变更</p>
 </blockquote>
@@ -253,7 +253,7 @@ export class VersionChildComponent implements OnChanges {
         &apos;previousValue&apos;:3
     }
 }
-</code></pre><h3 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h3><p>子组件暴露一个EventEmitter属性，当事件发生时，子组件利用该属性emits(向上弹射)事件。父组件绑定到这个事件属性，并在事件发生时作出回应</p>
+</code></pre><h1 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h1><p>子组件暴露一个EventEmitter属性，当事件发生时，子组件利用该属性emits(向上弹射)事件。父组件绑定到这个事件属性，并在事件发生时作出回应</p>
 <pre><code>import { Component, EventEmitter, Input, Output } from &apos;@angular/core&apos;;
 
 export class VoterComponent {
@@ -288,7 +288,7 @@ export class VoteTakerComponent {
 </code></pre><blockquote>
 <p>输入和输出变量有两种写法，效果等价：<br>组件类里声明:<br>@Input(别名) a;<br>@Output(别名) b;<br>元数据里声明：<br>Inputs:[‘a : 别名’]，<br>Outputs:[‘b : 别名’]，</p>
 </blockquote>
-<h3 id="使用引用变量获取组件"><a href="#使用引用变量获取组件" class="headerlink" title="使用引用变量获取组件"></a>使用引用变量获取组件</h3><p>在父组件模板里，可以通过设置引用变量代表子组件，然后利用这个变量来读取子组件的属性和调用子组件的方法</p>
+<h1 id="使用引用变量获取组件"><a href="#使用引用变量获取组件" class="headerlink" title="使用引用变量获取组件"></a>使用引用变量获取组件</h1><p>在父组件模板里，可以通过设置引用变量代表子组件，然后利用这个变量来读取子组件的属性和调用子组件的方法</p>
 <blockquote>
 <p>模板引用变量的使用只限制于在模板中使用</p>
 </blockquote>
@@ -329,7 +329,7 @@ import { CountdownTimerComponent }  from &apos;./countdown-timer.component&apos;
   styleUrls: [&apos;demo.css&apos;]
 })
 export class CountdownLocalVarParentComponent { }
-</code></pre><h3 id="ViewChild"><a href="#ViewChild" class="headerlink" title="ViewChild"></a>ViewChild</h3><p>模板引用变量方法有局限性，只能在模板中进行，父组件本身的代码对子组件没有访问权；要让父组件直接访问子组件的变量或方法，可使用ViewChild将子组件注入到父组件里面</p>
+</code></pre><h1 id="ViewChild"><a href="#ViewChild" class="headerlink" title="ViewChild"></a>ViewChild</h1><p>模板引用变量方法有局限性，只能在模板中进行，父组件本身的代码对子组件没有访问权；要让父组件直接访问子组件的变量或方法，可使用ViewChild将子组件注入到父组件里面</p>
 <pre><code>import { AfterViewInit, ViewChild } from &apos;@angular/core&apos;;
 import { Component }                from &apos;@angular/core&apos;;
 import { CountdownTimerComponent }  from &apos;./countdown-timer.component&apos;;
@@ -360,7 +360,7 @@ export class CountdownViewChildParentComponent implements AfterViewInit {
 </code></pre><blockquote>
 <p>注意：ngAfterViewInit()生命周期钩子是非常重要的一步。被注入的计时器组件只有在Angular显示了父组件视图之后才能访问，所以我们先把秒数显示为0；然后Angular会调用ngAfterViewInit生命周期钩子，但这时候再更新父组件视图的倒计时就已经太晚了。<br>Angular的单向数据流规则会阻止在同一个周期内更新父组件视图。我们在显示秒数之前会被迫再等一轮。<br>使用setTimeout()来等下一轮，然后改写seconds()方法，这样它接下来就会从注入的这个计时器组件里获取秒数的值</p>
 </blockquote>
-<h3 id="服务共享数据"><a href="#服务共享数据" class="headerlink" title="服务共享数据"></a>服务共享数据</h3><p>可以通过服务在父子组件之间来共享数据，因为在他们之间这个服务可以时单例的，父子组件使用服务的同一个实例，自然可以共享，这个在依赖注入里以及说的很多，这里不再阐述</p>
+<h1 id="服务共享数据"><a href="#服务共享数据" class="headerlink" title="服务共享数据"></a>服务共享数据</h1><p>可以通过服务在父子组件之间来共享数据，因为在他们之间这个服务可以时单例的，父子组件使用服务的同一个实例，自然可以共享，这个在依赖注入里以及说的很多，这里不再阐述</p>
 
       
 
@@ -524,7 +524,7 @@ export class CountdownViewChildParentComponent implements AfterViewInit {
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#输入变量"><span class="toc-number">1.</span> <span class="toc-text">输入变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#setter和getter"><span class="toc-number">2.</span> <span class="toc-text">setter和getter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OnChanges"><span class="toc-number">3.</span> <span class="toc-text">OnChanges</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事件监听"><span class="toc-number">4.</span> <span class="toc-text">事件监听</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用引用变量获取组件"><span class="toc-number">5.</span> <span class="toc-text">使用引用变量获取组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ViewChild"><span class="toc-number">6.</span> <span class="toc-text">ViewChild</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务共享数据"><span class="toc-number">7.</span> <span class="toc-text">服务共享数据</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#输入变量"><span class="toc-number">1.</span> <span class="toc-text">输入变量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#setter和getter"><span class="toc-number">2.</span> <span class="toc-text">setter和getter</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#OnChanges"><span class="toc-number">3.</span> <span class="toc-text">OnChanges</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#事件监听"><span class="toc-number">4.</span> <span class="toc-text">事件监听</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用引用变量获取组件"><span class="toc-number">5.</span> <span class="toc-text">使用引用变量获取组件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ViewChild"><span class="toc-number">6.</span> <span class="toc-text">ViewChild</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#服务共享数据"><span class="toc-number">7.</span> <span class="toc-text">服务共享数据</span></a></li></ol>
                     </div>
                 </span>
             </div>

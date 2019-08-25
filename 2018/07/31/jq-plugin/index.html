@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="bluesky个人小站">
 <meta property="og:description" content="JQuery插件是对jquery函数库的一种扩展，以便在不同地方可以复用JQuery插件主要有三种：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-14T17:41:37.361Z">
+<meta property="og:updated_time" content="2019-08-25T04:46:59.732Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JQuery-插件">
 <meta name="twitter:description" content="JQuery插件是对jquery函数库的一种扩展，以便在不同地方可以复用JQuery插件主要有三种：">
@@ -200,7 +200,7 @@
 <li>选择器插件：封装属于自己的新的jquery选择器</li>
 </ul>
 <p>在编写插件之前，先介绍一下两个重要的方法，在后面的插件书写中有重要的作用</p>
-<h3 id="闭包注册"><a href="#闭包注册" class="headerlink" title="闭包注册"></a>闭包注册</h3><p>闭包是js的特色，相比大家比较熟悉，在插件中有着很好的应用</p>
+<h1 id="闭包注册"><a href="#闭包注册" class="headerlink" title="闭包注册"></a>闭包注册</h1><p>闭包是js的特色，相比大家比较熟悉，在插件中有着很好的应用</p>
 <pre><code>;(function($) {
     ....插件扩展代码
  })(JQuery);
@@ -209,7 +209,7 @@
 <li>闭包函数自运行，将插件方注册金jquery里</li>
 <li>以$为入参，传入jquery，这样在插件内部就可以直接使用$</li>
 </ul>
-<h3 id="extend"><a href="#extend" class="headerlink" title="$.extend"></a>$.extend</h3><p>$.extend方法用于合并扩展对象</p>
+<h1 id="extend"><a href="#extend" class="headerlink" title="$.extend"></a>$.extend</h1><p>$.extend方法用于合并扩展对象</p>
 <pre><code>$.extend(targetObj,object1,object2,...)
 </code></pre><p>后面的对象同名成员将覆盖前面对象的成员，否则就合并起来,targetObj是合并后的对象，举个例子：</p>
 <pre><code>$.extend({},{name:&apos;jack&apos;,age:18,sex:&apos;man&apos;});
@@ -217,7 +217,7 @@
 
 $.extend({name:&apos;jack&apos;,age:18},{name:&apos;tom&apos;,sex:&apos;man&apos;});
 结果：{name:&apos;tom&apos;,age:18,sex:&apos;man&apos;}
-</code></pre><h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><h3 id="1-对象方法的插件"><a href="#1-对象方法的插件" class="headerlink" title="1 对象方法的插件"></a>1 对象方法的插件</h3><p>此类插件使用$.fn来扩展，比如：</p>
+</code></pre><h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><h1 id="1-对象方法的插件"><a href="#1-对象方法的插件" class="headerlink" title="1) 对象方法的插件"></a>1) 对象方法的插件</h1><p>此类插件使用$.fn来扩展，比如：</p>
 <pre><code>$.fn.valitor = function(object) {...} 或
 $.fn.extend({valitor: function(object) {...}))
 </code></pre><p>其实查看jquery的源码，可以看到</p>
@@ -286,7 +286,7 @@ $(function() {
 </code></pre><p>效果见：<a href="https://sandbox.runjs.cn/show/e3pqshbw" target="_blank" rel="noopener">bootTable插件</a></p>
 <p>当然，也可以隐藏私有方法，只要是在插件书写时直接这样生命方法即可</p>
 <pre><code>function privateFunc() {...}
-</code></pre><h3 id="2-全局方法的插件"><a href="#2-全局方法的插件" class="headerlink" title="2 全局方法的插件"></a>2 全局方法的插件</h3><p>此类插件使用$.extend()来扩展，其实可以理解为jquery命名空间添加静态方法，比如</p>
+</code></pre><h1 id="2-全局方法的插件"><a href="#2-全局方法的插件" class="headerlink" title="2) 全局方法的插件"></a>2) 全局方法的插件</h1><p>此类插件使用$.extend()来扩展，其实可以理解为jquery命名空间添加静态方法，比如</p>
 <pre><code>$.Fuc = function() {...}；
 $.extend({
     add: function(x,y) {
@@ -464,8 +464,8 @@ $.myName.Fuc();
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#闭包注册"><span class="toc-number">1.</span> <span class="toc-text">闭包注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#extend"><span class="toc-number">2.</span> <span class="toc-text">$.extend</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#插件"><span class="toc-number"></span> <span class="toc-text">插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-对象方法的插件"><span class="toc-number">1.</span> <span class="toc-text">1 对象方法的插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-全局方法的插件"><span class="toc-number">2.</span> <span class="toc-text">2 全局方法的插件</span></a></li></ol>
-                    </li></div>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#闭包注册"><span class="toc-number">1.</span> <span class="toc-text">闭包注册</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#extend"><span class="toc-number">2.</span> <span class="toc-text">$.extend</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#插件"><span class="toc-number">3.</span> <span class="toc-text">插件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-对象方法的插件"><span class="toc-number">4.</span> <span class="toc-text">1) 对象方法的插件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-全局方法的插件"><span class="toc-number">5.</span> <span class="toc-text">2) 全局方法的插件</span></a></li></ol>
+                    </div>
                 </span>
             </div>
         </div>

@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="bluesky个人小站">
 <meta property="og:description" content="路由守卫，顾名思义，是守护路由的导航激活，在路由激活之前进行逻辑判断和数据处理;比如：路由权限的判断，表单填写丢弃的询问，以及路由激活前数据额预加载..等等，都是守卫干的工作，下面会根据使用场景不同介绍几种守卫的实现">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-14T17:41:37.352Z">
+<meta property="og:updated_time" content="2019-08-25T04:27:55.426Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular-路由器守卫">
 <meta name="twitter:description" content="路由守卫，顾名思义，是守护路由的导航激活，在路由激活之前进行逻辑判断和数据处理;比如：路由权限的判断，表单填写丢弃的询问，以及路由激活前数据额预加载..等等，都是守卫干的工作，下面会根据使用场景不同介绍几种守卫的实现">
@@ -194,7 +194,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>路由守卫，顾名思义，是守护路由的导航激活，在路由激活之前进行逻辑判断和数据处理;比如：路由权限的判断，表单填写丢弃的询问，以及路由激活前数据额预加载..等等，都是守卫干的工作，下面会根据使用场景不同介绍几种守卫的实现<br><a id="more"></a></p>
-<h3 id="路由激活守卫"><a href="#路由激活守卫" class="headerlink" title="路由激活守卫"></a>路由激活守卫</h3><p>CanActivate守卫，用于对某个页面导航的守卫，在导航前可以作逻辑判断，比如：是否有访问权限，来判断是否激活这个路由来查看页面<br>主要步骤有：</p>
+<h1 id="路由激活守卫"><a href="#路由激活守卫" class="headerlink" title="路由激活守卫"></a>路由激活守卫</h1><p>CanActivate守卫，用于对某个页面导航的守卫，在导航前可以作逻辑判断，比如：是否有访问权限，来判断是否激活这个路由来查看页面<br>主要步骤有：</p>
 <ul>
 <li>封装服务，实现CanActivate接口，返回true，则允许激活;否则，不允许激活</li>
 <li>注入服务到对应模块，在路由配置中添加对于服务  </li>
@@ -235,7 +235,7 @@ const adminRoutes: Routes = [
     ]
   }
 ];
-</code></pre><h3 id="子路由激活守卫"><a href="#子路由激活守卫" class="headerlink" title="子路由激活守卫"></a>子路由激活守卫</h3><p>在前面路由守卫是守护一类特性路由的集合，由于守卫只会检测自身守护的对应路由参数有无变化，当子路由参数变化的时候是不会检测到的，比如上文的那个例子对于以下的url组是可以检测的：</p>
+</code></pre><h1 id="子路由激活守卫"><a href="#子路由激活守卫" class="headerlink" title="子路由激活守卫"></a>子路由激活守卫</h1><p>在前面路由守卫是守护一类特性路由的集合，由于守卫只会检测自身守护的对应路由参数有无变化，当子路由参数变化的时候是不会检测到的，比如上文的那个例子对于以下的url组是可以检测的：</p>
 <pre><code>/main/admin/../..
 /main/heros/../..
 </code></pre><p>但是一旦对应的参数固定后便检测不到，页面可以访问，比如下面这些路由：</p>
@@ -284,7 +284,7 @@ const adminRoutes: Routes = [
     ]
   }
 ];
-</code></pre><h3 id="表单去激活守卫"><a href="#表单去激活守卫" class="headerlink" title="表单去激活守卫"></a>表单去激活守卫</h3><p>CanDeactivate守卫，用于在填写表单时路由离开时使用，可进行判断是否离开，并进行一些数据处理</p>
+</code></pre><h1 id="表单去激活守卫"><a href="#表单去激活守卫" class="headerlink" title="表单去激活守卫"></a>表单去激活守卫</h1><p>CanDeactivate守卫，用于在填写表单时路由离开时使用，可进行判断是否离开，并进行一些数据处理</p>
 <ul>
 <li>封装服务，实现CanDeactivate接口，实现逻辑判断，返回true，则允许去激活，直接导航出去;否则，不允许激活，一般会以弹框询求确定</li>
 <li>注入服务到对应模块，在路由配置中添加对于服务</li>
@@ -386,7 +386,7 @@ const appRoutes: Routes = [
     component: TemplateFormComponent,
     canDeactivate: [CanDeactivateGuard2]}
 ];
-</code></pre><h3 id="数据预加载"><a href="#数据预加载" class="headerlink" title="数据预加载"></a>数据预加载</h3><p>预加载，顾名思义，就是在路由激活前对路由模板组件所需要的数据进行预先的获取，这样在路由激活展现时数据就已经有了，提高体验;而且，对于加载失败的情况也能作相应处理</p>
+</code></pre><h1 id="数据预加载"><a href="#数据预加载" class="headerlink" title="数据预加载"></a>数据预加载</h1><p>预加载，顾名思义，就是在路由激活前对路由模板组件所需要的数据进行预先的获取，这样在路由激活展现时数据就已经有了，提高体验;而且，对于加载失败的情况也能作相应处理</p>
 <ul>
 <li>封装服务，实现Resolve接口，进行数据获取，获取成功，返回结果Data，继续激活路由;否则，不允许激活，一般会导航到首页</li>
 <li>注入服务到对应模块，在路由配置中添加对应服务</li>
@@ -435,7 +435,7 @@ export class DataResolver implements Resolve&lt;User&gt; {
       });
   }
 }
-</code></pre><h3 id="模块访问守卫"><a href="#模块访问守卫" class="headerlink" title="模块访问守卫"></a>模块访问守卫</h3><p>CanLoad守卫，对懒加载模块的加载限制，加载前进行逻辑处理，满足条件才加载该模块</p>
+</code></pre><h1 id="模块访问守卫"><a href="#模块访问守卫" class="headerlink" title="模块访问守卫"></a>模块访问守卫</h1><p>CanLoad守卫，对懒加载模块的加载限制，加载前进行逻辑处理，满足条件才加载该模块</p>
 <ul>
 <li>封装服务，实现CanLoad接口，进行逻辑判断，若返回true，则加载模块并路由;否则，不再加载</li>
 <li>注入服务到对应模块，在路由配置中添加对应服务</li>
@@ -472,7 +472,7 @@ export class AuthGuard implements CanLoad {
     canLoad: [AuthGuard]
   }
 ];
-</code></pre><h3 id="模块预加载"><a href="#模块预加载" class="headerlink" title="模块预加载"></a>模块预加载</h3><p>在每次成功的导航后，路由器会在自己的配置中查找尚未加载并且可以预加载的模块。 是否加载某个模块，以及要加载哪些模块，取决于预加载策略。<br>Router内置了两种预加载策略：</p>
+</code></pre><h1 id="模块预加载"><a href="#模块预加载" class="headerlink" title="模块预加载"></a>模块预加载</h1><p>在每次成功的导航后，路由器会在自己的配置中查找尚未加载并且可以预加载的模块。 是否加载某个模块，以及要加载哪些模块，取决于预加载策略。<br>Router内置了两种预加载策略：</p>
 <ul>
 <li>完全不预加载，这是默认值。惰性加载的特性区仍然会按需加载。</li>
 <li>预加载所有惰性加载的特性区。</li>
@@ -750,7 +750,7 @@ export class AppRoutingModule {}
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#路由激活守卫"><span class="toc-number">1.</span> <span class="toc-text">路由激活守卫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#子路由激活守卫"><span class="toc-number">2.</span> <span class="toc-text">子路由激活守卫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表单去激活守卫"><span class="toc-number">3.</span> <span class="toc-text">表单去激活守卫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据预加载"><span class="toc-number">4.</span> <span class="toc-text">数据预加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模块访问守卫"><span class="toc-number">5.</span> <span class="toc-text">模块访问守卫</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#模块预加载"><span class="toc-number">6.</span> <span class="toc-text">模块预加载</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#路由激活守卫"><span class="toc-number">1.</span> <span class="toc-text">路由激活守卫</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#子路由激活守卫"><span class="toc-number">2.</span> <span class="toc-text">子路由激活守卫</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#表单去激活守卫"><span class="toc-number">3.</span> <span class="toc-text">表单去激活守卫</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据预加载"><span class="toc-number">4.</span> <span class="toc-text">数据预加载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模块访问守卫"><span class="toc-number">5.</span> <span class="toc-text">模块访问守卫</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#模块预加载"><span class="toc-number">6.</span> <span class="toc-text">模块预加载</span></a></li></ol>
                     </div>
                 </span>
             </div>

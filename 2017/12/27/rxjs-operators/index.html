@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="bluesky个人小站">
 <meta property="og:description" content="操作符是 Observable 类型上的方法，比如map(…)、.filter(…)、.merge(…)，等等。当操作符被调用时，它们不会改变已经存在的 Observable 实例。相反，它们返回一个新的 Observable ，它的 subscription 逻辑基于第一个 Observable">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-14T17:41:37.352Z">
+<meta property="og:updated_time" content="2019-08-25T04:30:09.064Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Rxjs-操作符">
 <meta name="twitter:description" content="操作符是 Observable 类型上的方法，比如map(…)、.filter(…)、.merge(…)，等等。当操作符被调用时，它们不会改变已经存在的 Observable 实例。相反，它们返回一个新的 Observable ，它的 subscription 逻辑基于第一个 Observable">
@@ -217,7 +217,7 @@ output.subscribe(x =&gt; console.log(x));
 20
 30
 40
-</code></pre><h3 id="操作符分类"><a href="#操作符分类" class="headerlink" title="操作符分类"></a>操作符分类</h3><p><strong>实例操作符</strong><br>通常提到操作符时，我们指的是实例操作符，它是 Observable 实例上的方法。举例来说，如果上面的 multiplyByTen 是官方提供的实例操作符，它看起来大致是这个样子的：</p>
+</code></pre><h1 id="操作符分类"><a href="#操作符分类" class="headerlink" title="操作符分类"></a>操作符分类</h1><p><strong>实例操作符</strong><br>通常提到操作符时，我们指的是实例操作符，它是 Observable 实例上的方法。举例来说，如果上面的 multiplyByTen 是官方提供的实例操作符，它看起来大致是这个样子的：</p>
 <pre><code>Rx.Observable.prototype.multiplyByTen = function multiplyByTen() {
   var input = this;
   return Rx.Observable.create(function subscribe(observer) {
@@ -240,8 +240,8 @@ Rx.Observable.forkJoin(obj1,obj2),subscribe(data =&gt; {
     var obj1 = data[0];
     var obj2 = data[1];
 });
-</code></pre><h3 id="常用操作符"><a href="#常用操作符" class="headerlink" title="常用操作符"></a>常用操作符</h3><p>Observable的操作符很多，详细可参考官网：<a href="http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html" target="_blank" rel="noopener">Rxjs-opertors</a>，里面有一节叫“选择操作符”很有用，指导你选择需要的操作符</p>
-<h5 id="1-创建"><a href="#1-创建" class="headerlink" title="1)  创建"></a>1)  创建</h5><p>create，empty，from，fromEvent，fromEventPattern，fromPromise，generate，interval，never，of，repeat，range，throw，timer等</p>
+</code></pre><h1 id="常用操作符"><a href="#常用操作符" class="headerlink" title="常用操作符"></a>常用操作符</h1><p>Observable的操作符很多，详细可参考官网：<a href="http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html" target="_blank" rel="noopener">Rxjs-opertors</a>，里面有一节叫“选择操作符”很有用，指导你选择需要的操作符</p>
+<h2 id="1-创建"><a href="#1-创建" class="headerlink" title="1)  创建"></a>1)  创建</h2><p>create，empty，from，fromEvent，fromEventPattern，fromPromise，generate，interval，never，of，repeat，range，throw，timer等</p>
 <pre><code>//每隔1秒发出自增的数字，3秒后开始发送。
 var numbers = Rx.Observable.timer(3000, 1000);
 numbers.subscribe(x =&gt; console.log(x));
@@ -257,7 +257,7 @@ var numbers = Rx.Observable.range(1, 10);
 
 //每1秒发出一个自增数
 var numbers = Rx.Observable.interval(1000);
-</code></pre><h4 id="2-转换"><a href="#2-转换" class="headerlink" title="2)  转换"></a>2)  转换</h4><p><strong>map</strong><br>map(function),根据条件函数对每个源方式值进行数据处理，输出到输出Observable<br><em>a.数据序列二次处理</em></p>
+</code></pre><h2 id="2-转换"><a href="#2-转换" class="headerlink" title="2)  转换"></a>2)  转换</h2><p><strong>map</strong><br>map(function),根据条件函数对每个源方式值进行数据处理，输出到输出Observable<br><em>a.数据序列二次处理</em></p>
 <pre><code>import { Observable} from &apos;rxjs/Observable&apos;;
 import &apos;rxjs/add/operator/map&apos;
 
@@ -392,7 +392,7 @@ var clicks = Rx.Observable.fromEvent(document, &apos;click&apos;);
 higherOrder.switchMap(v =&gt; Observable.interval(1000))
             .subscribe(x =&gt; console.log(x));
 </code></pre><p><strong>switchMapTo</strong><br><em>switchMapTo = switch + mapTo</em><br>效果与concatMapTo类似</p>
-<h4 id="3-过滤"><a href="#3-过滤" class="headerlink" title="3)  过滤"></a>3)  过滤</h4><p><strong>filter</strong><br>filter(function..),通过只发送源 Observable 的中满足指定 predicate 函数的项来进行过滤</p>
+<h2 id="3-过滤"><a href="#3-过滤" class="headerlink" title="3)  过滤"></a>3)  过滤</h2><p><strong>filter</strong><br>filter(function..),通过只发送源 Observable 的中满足指定 predicate 函数的项来进行过滤</p>
 <pre><code>let obj = Observable.interval(1000);
 this.subject = obj.filter(x =&gt; x%2 == 0)
                 .subscribe(v =&gt; {this.valueList.push(v);});
@@ -485,7 +485,7 @@ this.subject = obj.first((x) =&gt; {return x!== 0 &amp;&amp; x%5 == 0;},(value,i
 //输出 50
 </code></pre><p><strong>last</strong><br>last(predicate: function),只发出由源 Observable 所发出的值中最后一个(或最胡=后一个满足条件的值)，用法同first</p>
 <p><strong>skipLast</strong><br>skipLast(count: number),跳过源 Observable 最后发出的的N个值</p>
-<h4 id="4-组合"><a href="#4-组合" class="headerlink" title="4)  组合"></a>4)  组合</h4><p><strong>zip</strong><br>zip(observable,observable,..),将多个 Observable 组合以创建一个，该 Observable的值是由所有输入 Observables 的值按顺序计算而来的<br>如果最后一个参数是函数, 这个函数被用来计算最终发出的值.否则, 返回一个顺序包含所有输入值的数组</p>
+<h2 id="4-组合"><a href="#4-组合" class="headerlink" title="4)  组合"></a>4)  组合</h2><p><strong>zip</strong><br>zip(observable,observable,..),将多个 Observable 组合以创建一个，该 Observable的值是由所有输入 Observables 的值按顺序计算而来的<br>如果最后一个参数是函数, 这个函数被用来计算最终发出的值.否则, 返回一个顺序包含所有输入值的数组</p>
 <pre><code>let obj1 = Observable.of&lt;number&gt;(12,13,14);
 let obj2 = Observable.of&lt;string&gt;(&apos;AA&apos;,&apos;BB&apos;,&apos;CC&apos;);
 
@@ -531,9 +531,9 @@ this.subject = timer1.startWith(&apos;fff&apos;).subscribe(v =&gt; {this.valueLi
 var timer1 = Observable.of(1,2,3);
 this.subject = timer1.startWith(999).subscribe(v =&gt; {this.valueList.push(v);});
 输出：999  1  2  3
-</code></pre><h4 id="5-多播"><a href="#5-多播" class="headerlink" title="5)  多播"></a>5)  多播</h4><p><strong>multicast</strong></p>
+</code></pre><h2 id="5-多播"><a href="#5-多播" class="headerlink" title="5)  多播"></a>5)  多播</h2><p><strong>multicast</strong></p>
 <p><strong>publish</strong></p>
-<h4 id="6-错误处理"><a href="#6-错误处理" class="headerlink" title="6)  错误处理"></a>6)  错误处理</h4><p><strong>catch</strong><br>catch(selector: function),捕获 observable 中的错误，可以通过返回一个新的 observable 或者抛出错误对象来处理</p>
+<h2 id="6-错误处理"><a href="#6-错误处理" class="headerlink" title="6)  错误处理"></a>6)  错误处理</h2><p><strong>catch</strong><br>catch(selector: function),捕获 observable 中的错误，可以通过返回一个新的 observable 或者抛出错误对象来处理</p>
 <pre><code>Observable.of(1, 2, 3, 4, 5).map(n =&gt; {
                                     if (n == 4) {
                                       throw &apos;four!&apos;;
@@ -549,7 +549,7 @@ this.subject = timer1.startWith(999).subscribe(v =&gt; {this.valueList.push(v);}
                           );
 //输出：1, 2, 3, error in source. Details: four!
 </code></pre><p><strong>retry</strong><br>retry(count: number)，返回一个 Observable， 该 Observable 是源 Observable 不包含错误异常的镜像。 如果源 Observable 发生错误, 这个方法不会传播错误而是会不 断的重新订阅源 Observable 直到达到最大重试次数：count</p>
-<h4 id="7-条件"><a href="#7-条件" class="headerlink" title="7)  条件"></a>7)  条件</h4><p><strong>delay</strong><br>delay(number|Date),通过给定的超时或者直到一个给定的日期来延迟源 Observable 的发送</p>
+<h2 id="7-条件"><a href="#7-条件" class="headerlink" title="7)  条件"></a>7)  条件</h2><p><strong>delay</strong><br>delay(number|Date),通过给定的超时或者直到一个给定的日期来延迟源 Observable 的发送</p>
 <pre><code>let obj = Observable.interval(1000);
 this.subject = obj.delay(5000)
                 .subscribe(v =&gt; {this.valueList.push(v);});
@@ -572,7 +572,7 @@ this.subject = obj.toArray()
 <pre><code>Rx.Observable.toPromise()
              .then((value) =&gt; console.log(&apos;Value: %s&apos;, value))
              .catch((err) =&gt; console.log(&apos;Error: %s&apos;, err));
-</code></pre><h4 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h4><p><strong>defaultIfEmpty</strong><br>defaultIfEmpty(defaultValue: any)，如果源 Observable 在完成之前没有发出任何 next 值，则发出给定的值，否则返回 Observable 的镜像</p>
+</code></pre><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p><strong>defaultIfEmpty</strong><br>defaultIfEmpty(defaultValue: any)，如果源 Observable 在完成之前没有发出任何 next 值，则发出给定的值，否则返回 Observable 的镜像</p>
 <p><strong>every</strong><br>every(predicate: function),发出是否源 Observable 的每项都满足指定的条件,是则返回true,否则false</p>
 <pre><code>let obj = Observable.of(1,2,3,4,5,6,7,8);
 this.subject = obj.every(x =&gt; x &lt; 8)
@@ -596,7 +596,7 @@ this.subject = obj.findIndex(x =&gt; x%4 == 0)
 this.subject = obj.isEmpty()
                   .subscribe(v =&gt; {this.valueList.push(v);});
 //输出 false
-</code></pre><h4 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h4><p><strong>count</strong><br>count(predicate: function),发出源值的个数或满足函数条件的值个数</p>
+</code></pre><h2 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h2><p><strong>count</strong><br>count(predicate: function),发出源值的个数或满足函数条件的值个数</p>
 <pre><code>let obj = Observable.of(1,2,3,4,5,6,7,8);
 this.subject = obj.count()
                   .subscribe(v =&gt; {this.valueList.push(v);});
@@ -790,7 +790,7 @@ this.subject = obj.reduce((x,y) =&gt; x+y,0)
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#操作符分类"><span class="toc-number">1.</span> <span class="toc-text">操作符分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用操作符"><span class="toc-number">2.</span> <span class="toc-text">常用操作符</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-创建"><span class="toc-number">2.0.1.</span> <span class="toc-text">1)  创建</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-转换"><span class="toc-number">2.1.</span> <span class="toc-text">2)  转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-过滤"><span class="toc-number">2.2.</span> <span class="toc-text">3)  过滤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-组合"><span class="toc-number">2.3.</span> <span class="toc-text">4)  组合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-多播"><span class="toc-number">2.4.</span> <span class="toc-text">5)  多播</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-错误处理"><span class="toc-number">2.5.</span> <span class="toc-text">6)  错误处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-条件"><span class="toc-number">2.6.</span> <span class="toc-text">7)  条件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#工具"><span class="toc-number">2.7.</span> <span class="toc-text">工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数学"><span class="toc-number">2.8.</span> <span class="toc-text">数学</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#操作符分类"><span class="toc-number">1.</span> <span class="toc-text">操作符分类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常用操作符"><span class="toc-number">2.</span> <span class="toc-text">常用操作符</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-创建"><span class="toc-number">2.1.</span> <span class="toc-text">1)  创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-转换"><span class="toc-number">2.2.</span> <span class="toc-text">2)  转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-过滤"><span class="toc-number">2.3.</span> <span class="toc-text">3)  过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-组合"><span class="toc-number">2.4.</span> <span class="toc-text">4)  组合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-多播"><span class="toc-number">2.5.</span> <span class="toc-text">5)  多播</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-错误处理"><span class="toc-number">2.6.</span> <span class="toc-text">6)  错误处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-条件"><span class="toc-number">2.7.</span> <span class="toc-text">7)  条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#工具"><span class="toc-number">2.8.</span> <span class="toc-text">工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数学"><span class="toc-number">2.9.</span> <span class="toc-text">数学</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>

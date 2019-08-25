@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://blueskyawen.com/images/construct-directive01.png">
 <meta property="og:image" content="http://blueskyawen.com/images/construct-directive02.png">
 <meta property="og:image" content="http://blueskyawen.com/images/embedview.jpg">
-<meta property="og:updated_time" content="2019-02-14T17:41:37.348Z">
+<meta property="og:updated_time" content="2019-08-25T04:07:37.714Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular-结构指令">
 <meta name="twitter:description" content="结构型指令可以很方便的DOM结构树，Angular有一个强力的模板引擎来支持这一些，比如：添加、移除或维护DOM元素">
@@ -199,7 +199,7 @@
       
         <p>结构型指令可以很方便的DOM结构树，Angular有一个强力的模板引擎来支持这一些，比如：添加、移除或维护DOM元素<br><a id="more"></a><br>例如：</p>
 <pre><code>&lt;div *ngIf=&quot;hero&quot; &gt;{{hero.name}}&lt;/div&gt;
-</code></pre><h2 id="内置结构指令"><a href="#内置结构指令" class="headerlink" title="内置结构指令"></a>内置结构指令</h2><p><strong>（1）NgIf</strong></p>
+</code></pre><h1 id="内置结构指令"><a href="#内置结构指令" class="headerlink" title="内置结构指令"></a>内置结构指令</h1><p><strong>（1）NgIf</strong></p>
 <pre><code>&lt;div *ngIf=&quot;hero&quot; &gt;{{hero.name}}&lt;/div&gt;
 </code></pre><p>接受一个条件值，当条件为假时，从DOM中移除它的宿主元素，取消它监听过的那些DOM事件，从Angular变更检测中移除该组件，并销毁它，DOM节点可以被当做垃圾收集起来，并且<br>释放它们占用的内存；否则，则添加它们<br>解开语法糖：</p>
 <pre><code>&lt;div *ngIf=&quot;hero&quot; class=&quot;active&quot;&gt;{{hero.name}}&lt;/div&gt;
@@ -262,7 +262,7 @@
 <li>一个元素不同时使用两个结构型实例</li>
 </ul>
 </blockquote>
-<h2 id="ng-template-ng-container"><a href="#ng-template-ng-container" class="headerlink" title="ng-template/ng-container"></a>ng-template/ng-container</h2><p><strong>（1）ng-template</strong><br><code>&lt;ng-template&gt;</code>是一类html标签，是angular用来解释渲染结构性指令的一种方式，不会直接显示在html,最后会替换成同意义的注释；比如ngif中，当条件为false，angular将移除相应分支元素，取而代之的时一段注释<br>这个标签直接单独使用的时候也有次效果，比如：</p>
+<h1 id="ng-template-ng-container"><a href="#ng-template-ng-container" class="headerlink" title="ng-template/ng-container"></a>ng-template/ng-container</h1><p><strong>（1）ng-template</strong><br><code>&lt;ng-template&gt;</code>是一类html标签，是angular用来解释渲染结构性指令的一种方式，不会直接显示在html,最后会替换成同意义的注释；比如ngif中，当条件为false，angular将移除相应分支元素，取而代之的时一段注释<br>这个标签直接单独使用的时候也有次效果，比如：</p>
 <pre><code>&lt;ng-template&gt;&lt;p&gt;AA&lt;/p&gt;&lt;/ng-template&gt;
 </code></pre><p>包裹的元素内容在渲染时会消失，而代之的是注释</p>
 <p><strong>（2）ng-container</strong><br><code>&lt;ng-container&gt;</code>是一种不影响当前样式/布局的组合元素,angular只是用它来包裹控制内部元素的显示不显示，最后是不会添加渲染到DOM树上的，也不会有注释，使用起来就像普通语言中的if条件一样；它可直接包裹任何元素，包括文本</p>
@@ -282,7 +282,7 @@
   &lt;/ng-container&gt;
 &lt;/select&gt;
 </code></pre><p>会根据heros动态显示option,而所有的ng-container标签最后都会移除，否则会影响option显示</p>
-<h2 id="自定义结构指令"><a href="#自定义结构指令" class="headerlink" title="自定义结构指令"></a>自定义结构指令</h2><p>指令作用：使用数字来控制元素的增加和移除，类似于ngIf，接受源字符串，当输入是数字时添加；输入是非数字或空串，移除宿主元素</p>
+<h1 id="自定义结构指令"><a href="#自定义结构指令" class="headerlink" title="自定义结构指令"></a>自定义结构指令</h1><p>指令作用：使用数字来控制元素的增加和移除，类似于ngIf，接受源字符串，当输入是数字时添加；输入是非数字或空串，移除宿主元素</p>
 <pre><code>import { Directive, Input, TemplateRef, ViewContainerRef} from &apos;@angular/core&apos;;
 
 @Directive({
@@ -315,7 +315,7 @@ export class NumIfDirective {
 &lt;p *numIf=&quot;myValue&quot;&gt;输入的值是： {{myValue}}&lt;/p&gt;
 </code></pre><p>效果如下：</p>
 <p><img src="/images/construct-directive01.png"><img src="/images/construct-directive02.png"></p>
-<h5 id="其他，一些好东西："><a href="#其他，一些好东西：" class="headerlink" title="其他，一些好东西："></a>其他，一些好东西：</h5><p>1 . 自定义结构指令里头，有几个新的概念，这里简单说一下</p>
+<h1 id="其他一些好东西："><a href="#其他一些好东西：" class="headerlink" title="其他一些好东西："></a>其他一些好东西：</h1><p>1 . 自定义结构指令里头，有几个新的概念，这里简单说一下</p>
 <ul>
 <li>embedview,内嵌视图</li>
 <li>TemplateRef，内嵌视图创建模板，存有指令宿主元素模板</li>
@@ -486,7 +486,7 @@ export class NumIfDirective {
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#内置结构指令"><span class="toc-number">1.</span> <span class="toc-text">内置结构指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ng-template-ng-container"><span class="toc-number">2.</span> <span class="toc-text">ng-template/ng-container</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义结构指令"><span class="toc-number">3.</span> <span class="toc-text">自定义结构指令</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#其他，一些好东西："><span class="toc-number">3.0.0.1.</span> <span class="toc-text">其他，一些好东西：</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#内置结构指令"><span class="toc-number">1.</span> <span class="toc-text">内置结构指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ng-template-ng-container"><span class="toc-number">2.</span> <span class="toc-text">ng-template/ng-container</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义结构指令"><span class="toc-number">3.</span> <span class="toc-text">自定义结构指令</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#其他一些好东西："><span class="toc-number">4.</span> <span class="toc-text">其他一些好东西：</span></a></li></ol>
                     </div>
                 </span>
             </div>

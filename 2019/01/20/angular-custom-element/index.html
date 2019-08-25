@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="bluesky个人小站">
 <meta property="og:description" content="angular支持自定义标签元素，也就是组件。之前我们说过，组件是注册在注入器中的，由注入器在使用时自动注入实例。同样的，我们也可以手动的注册他们，在引用时得到实例并添加到视图中，便是所谓的“自定义元素”。 自定义元素创建 使用createCustomElement()方法把 Angular 组件及其依赖转换成自定义元素，该方法会收集该组件的 Observable 型属性，提供浏览器创建和销毁实例">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-14T17:41:37.367Z">
+<meta property="og:updated_time" content="2019-08-25T04:53:38.047Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义元素">
 <meta name="twitter:description" content="angular支持自定义标签元素，也就是组件。之前我们说过，组件是注册在注入器中的，由注入器在使用时自动注入实例。同样的，我们也可以手动的注册他们，在引用时得到实例并添加到视图中，便是所谓的“自定义元素”。 自定义元素创建 使用createCustomElement()方法把 Angular 组件及其依赖转换成自定义元素，该方法会收集该组件的 Observable 型属性，提供浏览器创建和销毁实例">
@@ -194,7 +194,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>angular支持自定义标签元素，也就是组件。之前我们说过，组件是注册在注入器中的，由注入器在使用时自动注入实例。<br>同样的，我们也可以手动的注册他们，在引用时得到实例并添加到视图中，便是所谓的“自定义元素”。</p>
-<h3 id="自定义元素创建"><a href="#自定义元素创建" class="headerlink" title="自定义元素创建"></a>自定义元素创建</h3><ul>
+<h1 id="自定义元素创建"><a href="#自定义元素创建" class="headerlink" title="自定义元素创建"></a>自定义元素创建</h1><ul>
 <li>使用createCustomElement()方法把 Angular 组件及其依赖转换成自定义元素，该方法会收集该组件的 Observable 型属性，提供浏览器创建和销毁实例时所需的 Angular 功能，并对变更进行检测并做出响应；同时，在这个转换过程实现了NgElementConstructor 接口，并创建了一个构造器类，用于生成该组件的一个自举型实例</li>
 <li>使用customElements.define() 函数把这个配置好的构造器和相关的自定义元素标签注册到浏览器的 CustomElementRegistry 中， 当浏览器遇到这个已注册元素的标签时，就会使用该构造器来创建一个自定义元素的实例</li>
 <li>为组件元素添加事件处理</li>
@@ -224,7 +224,7 @@ export class CustomElementComponent {
     customElements.define(&apos;popup-element&apos;, PopupElement);
   }
 }
-</code></pre><h3 id="自定义元素使用"><a href="#自定义元素使用" class="headerlink" title="自定义元素使用"></a>自定义元素使用</h3><p>在使用自定义元素之前，首首先在项目目录执行下面命令</p>
+</code></pre><h1 id="自定义元素使用"><a href="#自定义元素使用" class="headerlink" title="自定义元素使用"></a>自定义元素使用</h1><p>在使用自定义元素之前，首首先在项目目录执行下面命令</p>
 <pre><code>ng add @angular/elements
 </code></pre><p>这会为项目安装为elements和document-register-element.js，以及其他依赖项</p>
 <p>由于web component是es6的特性，还要修改tsconfig.json文件，否则会报错</p>
@@ -236,7 +236,7 @@ export class CustomElementComponent {
     ...
   }
 }
-</code></pre><h5 id="1-手动创建元素并添加到文档"><a href="#1-手动创建元素并添加到文档" class="headerlink" title="1. 手动创建元素并添加到文档"></a>1. 手动创建元素并添加到文档</h5><pre><code>//custom-element.component.html
+</code></pre><h2 id="1-手动创建元素并添加到文档"><a href="#1-手动创建元素并添加到文档" class="headerlink" title="1) 手动创建元素并添加到文档"></a>1) 手动创建元素并添加到文档</h2><pre><code>//custom-element.component.html
 &lt;nc-input [type]=&quot;&apos;text&apos;&quot; [(modelValue)]=&quot;message&quot; [required]=&quot;true&quot;&gt;
 &lt;nc-button (click)=&quot;showAsElement()&quot;&gt;自定义元素&lt;/nc-button&gt;
 
@@ -272,7 +272,7 @@ export class CustomElementComponent {
   }
 
 }
-</code></pre><h5 id="2-使用注册的自定义标签"><a href="#2-使用注册的自定义标签" class="headerlink" title="2. 使用注册的自定义标签"></a>2. 使用注册的自定义标签</h5><p>我们知道使用组件的selector标识符可以在html文档中使用它里创建组件实例，这一切都是angular自动做的。<br>同样，既然我们这里也创建了自定义元素，并把标签注册到了浏览器，我们也可以直接使用这个标签，要想在整个模块里都能只有该自定义元素，就应该在模块里创建和注册它</p>
+</code></pre><h2 id="2-使用注册的自定义标签"><a href="#2-使用注册的自定义标签" class="headerlink" title="2) 使用注册的自定义标签"></a>2) 使用注册的自定义标签</h2><p>我们知道使用组件的selector标识符可以在html文档中使用它里创建组件实例，这一切都是angular自动做的。<br>同样，既然我们这里也创建了自定义元素，并把标签注册到了浏览器，我们也可以直接使用这个标签，要想在整个模块里都能只有该自定义元素，就应该在模块里创建和注册它</p>
 <pre><code>import { NgModule,Injector } from &apos;@angular/core&apos;;
 import { createCustomElement} from &apos;@angular/elements&apos;;
 
@@ -298,7 +298,7 @@ export class BasicCookModule {
 <p>这个自定义元素的标签就是customElements.define()里注册的第一个参数，上边例子就是popup-element，于是就可以子模板中直接使用它</p>
 <pre><code>&lt;popup-element&gt;&lt;/popup-element&gt;
 </code></pre><p>点击<a href="http://blueskyawen.com/angular-work-cook/main/basic/comp/customEle">这里</a>查看自定义元素的一个例子</p>
-<h5 id="3-浏览器支持"><a href="#3-浏览器支持" class="headerlink" title="3. 浏览器支持"></a>3. 浏览器支持</h5><p>由于自定义元素要求浏览器有web component特性，目前支持的有：Chrome/Opera/Safari，Firefox在63版本以上支持<br>如果使用中出现以下错误，请检查下浏览器版本</p>
+<h1 id="浏览器支持"><a href="#浏览器支持" class="headerlink" title="浏览器支持"></a>浏览器支持</h1><p>由于自定义元素要求浏览器有web component特性，目前支持的有：Chrome/Opera/Safari，Firefox在63版本以上支持<br>如果使用中出现以下错误，请检查下浏览器版本</p>
 <pre><code>ERROR TypeError: this.ngElementStrategy is undefined
 </code></pre>
       
@@ -463,7 +463,7 @@ export class BasicCookModule {
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义元素创建"><span class="toc-number">1.</span> <span class="toc-text">自定义元素创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义元素使用"><span class="toc-number">2.</span> <span class="toc-text">自定义元素使用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-手动创建元素并添加到文档"><span class="toc-number">2.0.1.</span> <span class="toc-text">1. 手动创建元素并添加到文档</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-使用注册的自定义标签"><span class="toc-number">2.0.2.</span> <span class="toc-text">2. 使用注册的自定义标签</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-浏览器支持"><span class="toc-number">2.0.3.</span> <span class="toc-text">3. 浏览器支持</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义元素创建"><span class="toc-number">1.</span> <span class="toc-text">自定义元素创建</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自定义元素使用"><span class="toc-number">2.</span> <span class="toc-text">自定义元素使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-手动创建元素并添加到文档"><span class="toc-number">2.1.</span> <span class="toc-text">1) 手动创建元素并添加到文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-使用注册的自定义标签"><span class="toc-number">2.2.</span> <span class="toc-text">2) 使用注册的自定义标签</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#浏览器支持"><span class="toc-number">3.</span> <span class="toc-text">浏览器支持</span></a></li></ol>
                     </div>
                 </span>
             </div>

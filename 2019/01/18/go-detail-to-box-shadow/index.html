@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blueskyawen.com/images/box-shadow-outset.png">
 <meta property="og:image" content="http://blueskyawen.com/images/box-shadow-inset.png">
-<meta property="og:updated_time" content="2019-05-09T18:19:24.027Z">
+<meta property="og:updated_time" content="2019-08-25T04:52:18.717Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解box-shadow">
 <meta name="twitter:description" content="之前有介绍过box-shadow这个属性，目的为框盒子添加阴影，也了解一些使用方式，使用起来也不是十分复杂。但是最近在开展单位的前端cop项目时，发现此属性不简单，还可以这样用，而且会发现一些看似复杂好玩的东西竟然是用box-shadow实现的。网上介绍这个属性的大部分文章都是介绍怎么使用，各个属性值怎么设置会有如何的效果之类的，少有深入探讨，感觉读完之后知其然，却不知所以然，无法清晰融会。于是下">
@@ -208,7 +208,7 @@
 <li>color：阴影的颜色，参数可选，不设置便使用浏览器的默认色，因为各浏览器的默认色不同，推荐还是设置一下</li>
 <li>type：阴影类型，参数可选，不设置默认outset（外部阴影）， 还有inset（内部阴影）</li>
 </ul>
-<h2 id="外部阴影"><a href="#外部阴影" class="headerlink" title="外部阴影"></a>外部阴影</h2><p>当type不设置或设置为outset时，是为外部阴影，例如：</p>
+<h1 id="外部阴影"><a href="#外部阴影" class="headerlink" title="外部阴影"></a>外部阴影</h1><p>当type不设置或设置为outset时，是为外部阴影，例如：</p>
 <pre><code>box-shadow: 5px 5px 5px 5px #ccc;
 box-shadow: 5px 5px 5px 5px #ccc outset;
 </code></pre><p>外部阴影在浏览器渲染时一般是如下几步实现的，</p>
@@ -232,7 +232,7 @@ box-shadow: 5px 5px 5px 5px #ccc outset;
 <blockquote>
 <p>当模糊距离为0，只有spread-radius时，效果相当于border，但这并不是真正的border，盒子模型计算时宽高不会被计算在内</p>
 </blockquote>
-<h2 id="2-内部阴影"><a href="#2-内部阴影" class="headerlink" title="2 内部阴影"></a>2 内部阴影</h2><p>当type设置为inset时，是为内部阴影，例如：</p>
+<h1 id="内部阴影"><a href="#内部阴影" class="headerlink" title="内部阴影"></a>内部阴影</h1><p>当type设置为inset时，是为内部阴影，例如：</p>
 <pre><code>box-shadow: 5px 5px 5px 5px #ccc inset;
 </code></pre><p>个人理解，内部阴影在浏览器渲染时一般是如下几步实现的，</p>
 <ol>
@@ -252,7 +252,7 @@ box-shadow: 5px 5px 5px 5px #ccc outset;
 <li>bottom阴影: spread-radius - y-shadow + blur-radius/2</li>
 <li>right阴影: spread-radius - x-shadow + blur-radius/2</li>
 </ul>
-<h2 id="3-多个阴影及层级关系"><a href="#3-多个阴影及层级关系" class="headerlink" title="3 多个阴影及层级关系"></a>3 多个阴影及层级关系</h2><p><strong>1） 多个阴影</strong><br>当多个阴影重叠时，声明在前面会覆盖后面的，比如：</p>
+<h1 id="多个阴影及层级关系"><a href="#多个阴影及层级关系" class="headerlink" title="多个阴影及层级关系"></a>多个阴影及层级关系</h1><p><strong>1） 多个阴影</strong><br>当多个阴影重叠时，声明在前面会覆盖后面的，比如：</p>
 <p>box-shadow: 0px 0px 5px 10px blue, 0px 0px 5px 20px red;</p>
 <p>其中前面的蓝色阴影会覆盖后面的红色阴影</p>
 <p><strong>2） 层级关系</strong><br>有了框阴影，便有了内外阴影，元素边框，背景和内容等的呈现层级关系，一般为如下层级关系：<br>border &gt; 内阴影 &gt; background-image &gt; background-color &gt; 外阴影  </p>
@@ -421,7 +421,7 @@ box-shadow: 5px 5px 5px 5px #ccc outset;
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#外部阴影"><span class="toc-number">1.</span> <span class="toc-text">外部阴影</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-内部阴影"><span class="toc-number">2.</span> <span class="toc-text">2 内部阴影</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-多个阴影及层级关系"><span class="toc-number">3.</span> <span class="toc-text">3 多个阴影及层级关系</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#外部阴影"><span class="toc-number">1.</span> <span class="toc-text">外部阴影</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#内部阴影"><span class="toc-number">2.</span> <span class="toc-text">内部阴影</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#多个阴影及层级关系"><span class="toc-number">3.</span> <span class="toc-text">多个阴影及层级关系</span></a></li></ol>
                     </div>
                 </span>
             </div>

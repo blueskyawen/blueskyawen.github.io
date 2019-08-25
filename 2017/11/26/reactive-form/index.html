@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blueskyawen.com/images/reactiveForm1.png">
 <meta property="og:image" content="http://blueskyawen.com/images/reactiveForm2.png">
-<meta property="og:updated_time" content="2019-02-14T17:41:37.351Z">
+<meta property="og:updated_time" content="2019-08-25T04:26:30.904Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="表单-响应式构建表单">
 <meta name="twitter:description" content="什么是响应式表单响应式表单主要是数据管理的方式不同，它是在类中显式的管理我们的数据流和数据模型，直接操作数据模型进行状态控制。同时，它还以可以直接在组件类中创建表单控件树，并绑定到相应的标签上来构建表单，简单方便。">
@@ -196,13 +196,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="什么是响应式表单"><a href="#什么是响应式表单" class="headerlink" title="什么是响应式表单"></a>什么是响应式表单</h2><p>响应式表单主要是数据管理的方式不同，它是在类中显式的管理我们的数据流和数据模型，直接操作数据模型进行状态控制。同时，它还以可以直接在组件类中创建表单控件树，并绑定到相应的标签上来构建表单，简单方便。<br><a id="more"></a><br>响应式表单有以下特点：</p>
+        <h1 id="什么是响应式表单"><a href="#什么是响应式表单" class="headerlink" title="什么是响应式表单"></a>什么是响应式表单</h1><p>响应式表单主要是数据管理的方式不同，它是在类中显式的管理我们的数据流和数据模型，直接操作数据模型进行状态控制。同时，它还以可以直接在组件类中创建表单控件树，并绑定到相应的标签上来构建表单，简单方便。<br><a id="more"></a><br>响应式表单有以下特点：</p>
 <ul>
 <li>显式的管理数据方式，方便了校验和测试</li>
 <li>表单的控件值和有效性状态的更新是同步的，不会有更新时序问题，更易单元测试;而之前的模板驱动表单是更新异步的，存在更新的时序和效率问题，在有些场景下会存在使用瓶颈</li>
 <li>由于表单数据模型是自定义的，所以可以根据数据对象的结构来定义结构类似的模型树满足，这样数据更新更方便</li>
 </ul>
-<h2 id="基本组成"><a href="#基本组成" class="headerlink" title="基本组成"></a>基本组成</h2><p><strong>AbstractControl</strong>： 三个具体表单类的抽象基类。 并为它们提供了一些共同的行为和属性，其中有些是可观察对象（Observable）。</p>
+<h1 id="基本组成"><a href="#基本组成" class="headerlink" title="基本组成"></a>基本组成</h1><p><strong>AbstractControl</strong>： 三个具体表单类的抽象基类。 并为它们提供了一些共同的行为和属性，其中有些是可观察对象（Observable）。</p>
 <p><strong>FormControlDirective/FormControlName</strong> : 用于跟踪一个单独的表单控件的值和有效性状态。它对应于一个HTML表单控件，比如输入框和下拉框。请FormControlDirective可单独使用，FormControlName和Group结合使用</p>
 <p><strong>FormGroupDirective/FormGroupName</strong> : 用于 跟踪一组AbstractControl的实例的值和有效性状态。 该组的属性中包含了它的子控件。 组件中的顶级表单就是一个FormGroup。而FormGroupName在多级group结构使用</p>
 <p><strong>FormArray/FormArrayName</strong> : 用于跟踪AbstractControl实例组成的有序数组的值和有效性状态。</p>
@@ -218,7 +218,7 @@ import { FormControl } from &apos;@angular/forms&apos;;
     FormControl
   ]
 }
-</code></pre><h2 id="控件指令的使用"><a href="#控件指令的使用" class="headerlink" title="控件指令的使用"></a>控件指令的使用</h2><p>上面的指令一般可以单独使用，也可以组合使用，下面描述几种常用的使用场景,为简单标识，我们约定各指令简写：</p>
+</code></pre><h1 id="控件指令的使用"><a href="#控件指令的使用" class="headerlink" title="控件指令的使用"></a>控件指令的使用</h1><p>上面的指令一般可以单独使用，也可以组合使用，下面描述几种常用的使用场景,为简单标识，我们约定各指令简写：</p>
 <ul>
 <li>FormGroup – FG</li>
 <li>FormControl – FC</li>
@@ -503,7 +503,7 @@ export class ReactiveFormComponent implements OnInit {
   get address(): FormArray {
     return this.myForm.get(&apos;address&apos;) as FormArray;
   };
-</code></pre><h2 id="完整表单例子"><a href="#完整表单例子" class="headerlink" title="完整表单例子"></a>完整表单例子</h2><p>本节使用响应式构建与模板驱动表单一节中效果相同的表单</p>
+</code></pre><h1 id="完整表单例子"><a href="#完整表单例子" class="headerlink" title="完整表单例子"></a>完整表单例子</h1><p>本节使用响应式构建与模板驱动表单一节中效果相同的表单</p>
 <p>component.ts</p>
 <pre><code>import { Component, OnInit } from &apos;@angular/core&apos;;
 import { FormControl, Validators, FormGroup, FormBuilder,FormArray } from &apos;@angular/forms&apos;;
@@ -700,7 +700,7 @@ export class ReactiveFormComponent implements OnInit {
 &lt;/form&gt;
 &lt;p&gt;{{myForm.value | json}}&lt;/p&gt;
 </code></pre><p>样子如下：<br><img src="/images/reactiveForm1.png" alt="reactiveForm1"><br><img src="/images/reactiveForm2.png" alt="reactiveForm2"></p>
-<h5 id="其他有用的东西："><a href="#其他有用的东西：" class="headerlink" title="其他有用的东西："></a>其他有用的东西：</h5><p><strong>1 . 同步和异步更新</strong></p>
+<h1 id="其他有用的东西："><a href="#其他有用的东西：" class="headerlink" title="其他有用的东西："></a>其他有用的东西：</h1><p><strong>1 . 同步和异步更新</strong></p>
 <p>响应式表单是同步的。<br>使用响应式表单，我们会在代码中创建整个表单控件树。 我们可以立即更新一个值或者深入到表单中的任意节点，因为所有的控件都始终是可用的。</p>
 <p>模板驱动表单是异步的。<br>模板驱动表单会委托指令来创建它们的表单控件。 为了消除“检查完后又变化了”的错误，这些指令需要消耗一个以上的变更检测周期来构建整个控件树。 这意味着在从组件类中操纵任何控件之前，我们都必须先等待一个节拍。<br>比如，如果我们用@ViewChild(NgForm)查询来注入表单控件，并在生命周期钩子ngAfterViewInit中检查它，就会发现它没有子控件。 我们必须使用setTimeout等待一个节拍才能从控件中提取值、测试有效性，或把它设置为新值。</p>
 <p><strong>2 . 模板驱动表单和响应式表单的区别</strong></p>
@@ -876,19 +876,6 @@ export class ReactiveFormComponent implements OnInit {
             </div>
         </div>
         
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是响应式表单"><span class="toc-number">1.</span> <span class="toc-text">什么是响应式表单</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本组成"><span class="toc-number">2.</span> <span class="toc-text">基本组成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#控件指令的使用"><span class="toc-number">3.</span> <span class="toc-text">控件指令的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#完整表单例子"><span class="toc-number">4.</span> <span class="toc-text">完整表单例子</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#其他有用的东西："><span class="toc-number">4.0.0.1.</span> <span class="toc-text">其他有用的东西：</span></a></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
         
     </div>
 </aside>

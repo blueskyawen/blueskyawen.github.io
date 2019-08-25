@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="bluesky个人小站">
 <meta property="og:description" content="前端应用需要通过http协议与后端服务器通讯,现代浏览器支持使用两种不同的 API 发起 HTTP 请求：XMLHttpRequest 接口和 fetch() API。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-14T17:41:37.348Z">
+<meta property="og:updated_time" content="2019-08-25T04:10:20.088Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular-Http">
 <meta name="twitter:description" content="前端应用需要通过http协议与后端服务器通讯,现代浏览器支持使用两种不同的 API 发起 HTTP 请求：XMLHttpRequest 接口和 fetch() API。">
@@ -194,7 +194,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>前端应用需要通过http协议与后端服务器通讯,现代浏览器支持使用两种不同的 API 发起 HTTP 请求：XMLHttpRequest 接口和 fetch() API。<br><a id="more"></a><br>@angular/common/http中的HttpClient类(旧版的时Http)，Angular 为应用程序提供了一个简化的 API 来实现 HTTP 功能。它基于浏览器提供的XMLHttpRequest接口。 HttpClient带来的其它优点包括：可测试性、强类型的请求和响应对象、发起请求与接收响应时的拦截器支持，以及更好的、基于可观察（Observable）对象的错误处理机制</p>
-<h3 id="引入Http模块"><a href="#引入Http模块" class="headerlink" title="引入Http模块"></a>引入Http模块</h3><p>在应用根模块引入一次即可，这样可在全应用范围内可用</p>
+<h1 id="引入Http模块"><a href="#引入Http模块" class="headerlink" title="引入Http模块"></a>引入Http模块</h1><p>在应用根模块引入一次即可，这样可在全应用范围内可用</p>
 <pre><code>import {HttpClientModule} from &apos;@angular/common/http&apos;;
 
 @NgModule({
@@ -205,7 +205,7 @@
 })
 export class AppModule {}
 </code></pre><p>引入之后，在应用的各个组件和服务里就可以通过依赖注入来使用此服务了</p>
-<h3 id="基本应用"><a href="#基本应用" class="headerlink" title="基本应用"></a>基本应用</h3><h5 id="（1）获取数据"><a href="#（1）获取数据" class="headerlink" title="（1）获取数据"></a>（1）获取数据</h5><p><strong>基本格式</strong></p>
+<h1 id="基本应用"><a href="#基本应用" class="headerlink" title="基本应用"></a>基本应用</h1><h2 id="（1）获取数据"><a href="#（1）获取数据" class="headerlink" title="（1）获取数据"></a>（1）获取数据</h2><p><strong>基本格式</strong></p>
 <pre><code>import {Observable} from &quot;rxjs/Observable&quot;;
 import {HttpClient} from &quot;@angular/common/http&quot;;
 
@@ -305,7 +305,7 @@ this.http.get(&apos;/api/items&apos;).pipe(
    ).subscribe(data =&gt; {
        this.content = data;
    });
-</code></pre><h5 id="（2）添加数据"><a href="#（2）添加数据" class="headerlink" title="（2）添加数据"></a>（2）添加数据</h5><p><strong>基本格式</strong></p>
+</code></pre><h2 id="（2）添加数据"><a href="#（2）添加数据" class="headerlink" title="（2）添加数据"></a>（2）添加数据</h2><p><strong>基本格式</strong></p>
 <pre><code>http.post(url, body, {headers: new HttpHeaders()})
     .pipe(
         map(...),
@@ -343,13 +343,13 @@ http.post(url, body,
 </code></pre><p>同样的，HttpParams实例是不可变的，如果需要增加或修改配置，需要clone一份</p>
 <pre><code>params =
   new HttpParams().set(&apos;name&apos;, &apos;a123456&apos;);
-</code></pre><h5 id="（3）修改数据"><a href="#（3）修改数据" class="headerlink" title="（3）修改数据"></a>（3）修改数据</h5><p>与post类似，只是换成了put而已</p>
+</code></pre><h2 id="（3）修改数据"><a href="#（3）修改数据" class="headerlink" title="（3）修改数据"></a>（3）修改数据</h2><p>与post类似，只是换成了put而已</p>
 <pre><code>http.put(url, body,
     {headers: new HttpHeaders().set(‘Authorization’, ‘my-auth-token’)})
     .pipe(
         catchError(this.handeError)
     ).subscribe(...);
-</code></pre><h5 id="（4）删除数据"><a href="#（4）删除数据" class="headerlink" title="（4）删除数据"></a>（4）删除数据</h5><pre><code>http.delete(url, id)
+</code></pre><h2 id="（4）删除数据"><a href="#（4）删除数据" class="headerlink" title="（4）删除数据"></a>（4）删除数据</h2><pre><code>http.delete(url, id)
   .pipe(
         catchError(this.handeError)
     ).subscribe();
@@ -520,7 +520,7 @@ http.post(url, body,
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#引入Http模块"><span class="toc-number">1.</span> <span class="toc-text">引入Http模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本应用"><span class="toc-number">2.</span> <span class="toc-text">基本应用</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#（1）获取数据"><span class="toc-number">2.0.1.</span> <span class="toc-text">（1）获取数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#（2）添加数据"><span class="toc-number">2.0.2.</span> <span class="toc-text">（2）添加数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#（3）修改数据"><span class="toc-number">2.0.3.</span> <span class="toc-text">（3）修改数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#（4）删除数据"><span class="toc-number">2.0.4.</span> <span class="toc-text">（4）删除数据</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#引入Http模块"><span class="toc-number">1.</span> <span class="toc-text">引入Http模块</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#基本应用"><span class="toc-number">2.</span> <span class="toc-text">基本应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#（1）获取数据"><span class="toc-number">2.1.</span> <span class="toc-text">（1）获取数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（2）添加数据"><span class="toc-number">2.2.</span> <span class="toc-text">（2）添加数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（3）修改数据"><span class="toc-number">2.3.</span> <span class="toc-text">（3）修改数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（4）删除数据"><span class="toc-number">2.4.</span> <span class="toc-text">（4）删除数据</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
