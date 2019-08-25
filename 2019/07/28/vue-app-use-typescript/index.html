@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://blueskyawen.com">
-  <title>Vue-typescript实现支持 | bluesky个人小站</title>
+  <title>Vue-应用的typescript支持 | bluesky个人小站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="待添加">
+  <meta name="description" content="vue默认使用js作为开发语言，但通过配置和插件也在vue中支持typescript，通过ts的强类型系统可以防止许多的错误，提高开发效率。vue-cli已经在创建应用提供了是否支持ts的选项，">
 <meta name="keywords" content="vue">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue-typescript实现支持">
+<meta property="og:title" content="Vue-应用的typescript支持">
 <meta property="og:url" content="http://blueskyawen.com/2019/07/28/vue-app-use-typescript/index.html">
 <meta property="og:site_name" content="bluesky个人小站">
-<meta property="og:description" content="待添加">
+<meta property="og:description" content="vue默认使用js作为开发语言，但通过配置和插件也在vue中支持typescript，通过ts的强类型系统可以防止许多的错误，提高开发效率。vue-cli已经在创建应用提供了是否支持ts的选项，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-18T04:32:15.158Z">
+<meta property="og:updated_time" content="2019-08-24T17:06:57.838Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue-typescript实现支持">
-<meta name="twitter:description" content="待添加">
+<meta name="twitter:title" content="Vue-应用的typescript支持">
+<meta name="twitter:description" content="vue默认使用js作为开发语言，但通过配置和插件也在vue中支持typescript，通过ts的强类型系统可以防止许多的错误，提高开发效率。vue-cli已经在创建应用提供了是否支持ts的选项，">
   
     <link rel="alternative" href="/atom.xml" title="bluesky个人小站" type="application/atom+xml">
   
@@ -180,7 +180,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Vue-typescript实现支持
+      Vue-应用的typescript支持
     </h1>
   
 
@@ -193,7 +193,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>待添加</p>
+        <p>vue默认使用js作为开发语言，但通过配置和插件也在vue中支持typescript，通过ts的强类型系统可以防止许多的错误，提高开发效率。<br>vue-cli已经在创建应用提供了是否支持ts的选项，</p>
+<a id="more"></a>
+<pre><code>vue create my-app 
+</code></pre><p>选择自定义选项</p>
+<pre><code>? Please pick a preset: 
+  default (babel, eslint) 
+❯ Manually select features 
+</code></pre><p>在选项中选择支持Typescript</p>
+<pre><code>? Please pick a preset: Manually select features
+? Check the features needed for your project: 
+ ◉ Babel
+❯◉ TypeScript
+ ◯ Progressive Web App (PWA) Support
+ ◉ Router
+ ◯ Vuex
+ ◉ CSS Pre-processors
+ ◉ Linter / Formatter
+ ◯ Unit Testing
+ ◯ E2E Testing
+</code></pre><p>悬着是否使用class类的component语法</p>
+<pre><code>? Check the features needed for your project: Babel, TS
+? Use class-style component syntax? (Y/n) Y
+</code></pre><p>按照选择的配置，创建的应用便可支持ts</p>
 
       
 
@@ -475,6 +497,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -528,10 +554,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">

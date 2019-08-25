@@ -17,7 +17,7 @@
 <meta property="og:description" content="花了好几天时间，终于把博客搭建好了。搭建博客是为了写点东西，记录下平时学习和生活的点滴，便于积累知识和查看。然而发现，记录文章是基于Markdown语法来书写的，所以在开始博客前先熟悉了下markdown语法，并对常用的一些语法作了下总结，基本可以满足平常的写作需求。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://blueskyawen.com/images/longmao01.jpg">
-<meta property="og:updated_time" content="2019-02-14T17:41:37.342Z">
+<meta property="og:updated_time" content="2019-08-25T03:18:23.086Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Markdown语法及编辑工具">
 <meta name="twitter:description" content="花了好几天时间，终于把博客搭建好了。搭建博客是为了写点东西，记录下平时学习和生活的点滴，便于积累知识和查看。然而发现，记录文章是基于Markdown语法来书写的，所以在开始博客前先熟悉了下markdown语法，并对常用的一些语法作了下总结，基本可以满足平常的写作需求。">
@@ -196,11 +196,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>花了好几天时间，终于把博客搭建好了。<br>搭建博客是为了写点东西，记录下平时学习和生活的点滴，便于积累知识和查看。<br>然而发现，记录文章是基于Markdown语法来书写的，所以在开始博客前先熟悉了下markdown语法，并对常用的一些语法作了下总结，基本可以满足平常的写作需求。<br><a id="more"></a></p>
-<h2 id="1-Markdown语法"><a href="#1-Markdown语法" class="headerlink" title="1. Markdown语法"></a>1. Markdown语法</h2><p>其实就是一种text to html的微语法，文本化的书写方式，最终还是由工具转化成html文档加以展示。</p>
-<h3 id="HTML兼容"><a href="#HTML兼容" class="headerlink" title="HTML兼容"></a>HTML兼容</h3><p>markdown语法对html标签是兼容的，在写作时可以随意使用html标签组织内容，但对于块级元素(比如:div)和行内元素标签(比如:span)和微语法的结合效果是不一样的:<strong>块级元素标签内markdown语法无效;而行内元素标签内markdown语法有效</strong>。</p>
-<h3 id="特殊字符的自动转化"><a href="#特殊字符的自动转化" class="headerlink" title="特殊字符的自动转化"></a>特殊字符的自动转化</h3><p>对于&amp; &lt; 这样的符号在html文档里有特殊意义的，但markdown会根据它们的使用场景进行自动转换，比如:当&lt;用于标签表示时工具不去理会，但是当只用于普通场景(3&lt;5)时会自动转化成对应的实体。</p>
-<h3 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h3><p>段落前后默认会有空行，如果需要在段落内换行，可敲2个空格加回车</p>
-<h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><p>markdown里有两种标题形式:</p>
+<h1 id="一-Markdown语法"><a href="#一-Markdown语法" class="headerlink" title="一. Markdown语法"></a>一. Markdown语法</h1><p>其实就是一种text to html的微语法，文本化的书写方式，最终还是由工具转化成html文档加以展示。</p>
+<h2 id="HTML兼容"><a href="#HTML兼容" class="headerlink" title="HTML兼容"></a>HTML兼容</h2><p>markdown语法对html标签是兼容的，在写作时可以随意使用html标签组织内容，但对于块级元素(比如:div)和行内元素标签(比如:span)和微语法的结合效果是不一样的:<strong>块级元素标签内markdown语法无效;而行内元素标签内markdown语法有效</strong>。</p>
+<h2 id="特殊字符的自动转化"><a href="#特殊字符的自动转化" class="headerlink" title="特殊字符的自动转化"></a>特殊字符的自动转化</h2><p>对于&amp; &lt; 这样的符号在html文档里有特殊意义的，但markdown会根据它们的使用场景进行自动转换，比如:当&lt;用于标签表示时工具不去理会，但是当只用于普通场景(3&lt;5)时会自动转化成对应的实体。</p>
+<h2 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h2><p>段落前后默认会有空行，如果需要在段落内换行，可敲2个空格加回车</p>
+<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>markdown里有两种标题形式:</p>
 <p><strong>1). Setext</strong></p>
 <pre><code># 标题1
 ## 标题2
@@ -214,7 +214,7 @@
 ====
 二级标题
 ----
-</code></pre><h3 id="区块引用"><a href="#区块引用" class="headerlink" title="区块引用"></a>区块引用</h3><p>使用&gt;符号定义应用，可以多层嵌套</p>
+</code></pre><h2 id="区块引用"><a href="#区块引用" class="headerlink" title="区块引用"></a>区块引用</h2><p>使用&gt;符号定义应用，可以多层嵌套</p>
 <pre><code>&gt; 外文引用
 &gt; &gt; 外文引用
 </code></pre><p>效果如下：</p>
@@ -224,7 +224,7 @@
 <p>外文引用</p>
 </blockquote>
 </blockquote>
-<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p><strong>1). 无序列表:</strong>使用* + - 来构造无序列表</p>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p><strong>1). 无序列表:</strong>使用* + - 来构造无序列表</p>
 <pre><code>* 列表项目1
 * 列表项目2
 + 列表项目1
@@ -245,12 +245,12 @@
 <li>列表项目2</li>
 </ol>
 <p>注意：列表标记符号和项目内容之间须至少1个空格，最多3个空格</p>
-<h3 id="代码区块"><a href="#代码区块" class="headerlink" title="代码区块"></a>代码区块</h3><p>使用反引号`包围代码块，或者缩进4个空格来构造代码块，当代码块作为列表或引用的子元素时，可缩进到5个空格<br>注意：代码块前后须加空行</p>
-<h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><p>使用多个* - _ 来制造分隔线</p>
+<h2 id="代码区块"><a href="#代码区块" class="headerlink" title="代码区块"></a>代码区块</h2><p>使用反引号`包围代码块，或者缩进4个空格来构造代码块，当代码块作为列表或引用的子元素时，可缩进到5个空格<br>注意：代码块前后须加空行</p>
+<h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><p>使用多个* - _ 来制造分隔线</p>
 <pre><code>***
 ---
 ___
-</code></pre><h2 id="效果如下："><a href="#效果如下：" class="headerlink" title="效果如下："></a>效果如下：</h2><h3 id="插入链接"><a href="#插入链接" class="headerlink" title="插入链接"></a>插入链接</h3><p><strong>(1) 行内形式</strong></p>
+</code></pre><h2 id="效果如下："><a href="#效果如下：" class="headerlink" title="效果如下："></a>效果如下：</h2><h2 id="插入链接"><a href="#插入链接" class="headerlink" title="插入链接"></a>插入链接</h2><p><strong>(1) 行内形式</strong></p>
 <pre><code>[百度一下，你就知道](http://www.baidu.com &quot;baidu&quot;)
 </code></pre><p>效果如下：<br><a href="http://www.baidu.com" title="baidu" target="_blank" rel="noopener">百度一下，你就知道</a></p>
 <p><strong>(2) 参考形式</strong></p>
@@ -260,18 +260,18 @@ ___
 [淘宝]: http://www.taobao.com &quot;taobao&quot;
 </code></pre><p>效果如下：<br><a href="http://www.baidu.com" title="baidu" target="_blank" rel="noopener">百度一下，你就知道</a><br><a href="http://www.taobao.com" title="taobao" target="_blank" rel="noopener">淘宝</a></p>
 <p>注意：参考形式的url定义处和使用处须有空行，一般放在段落后面或文章最尾部</p>
-<h3 id="插入图像"><a href="#插入图像" class="headerlink" title="插入图像"></a>插入图像</h3><p>与链接类似，也分行内形式和参考形式</p>
+<h2 id="插入图像"><a href="#插入图像" class="headerlink" title="插入图像"></a>插入图像</h2><p>与链接类似，也分行内形式和参考形式</p>
 <pre><code>![text](url &quot;title&quot;)
 
 ![text][id]
 [id]: url &quot;title&quot;
 </code></pre><p>效果如下:<br><img src="/images/longmao01.jpg" alt="longmao" title="longmao_01"></p>
-<h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><p>单个*斜体，俩个粗体</p>
+<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><p>单个*斜体，俩个粗体</p>
 <pre><code>*斜体*
 **粗体**
 ***斜体+粗体***
 </code></pre><p>效果如下：<br><em>斜体</em><br><strong>粗体</strong><br><strong><em>斜体+粗体</em></strong></p>
-<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><pre><code>| Left-Aligned  | Center Aligned  | Right Aligned |
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><pre><code>| Left-Aligned  | Center Aligned  | Right Aligned |
 | :------------ |:---------------:| -----:|
 | col 3 is      | some wordy text | $1600 |
 | col 2 is      | centered        |   $12 |
@@ -298,7 +298,7 @@ ___
 </tbody>
 </table>
 <p>其中，:—左对齐，:—:中间对齐，—:左对齐，</p>
-<h2 id="2-Markdown工具"><a href="#2-Markdown工具" class="headerlink" title="2. Markdown工具"></a>2. Markdown工具</h2><p>有许多的markdown语法转换工具，提供便捷书写和实时预览的功能，帮助方便的编辑文档，个人推荐以下，可在线编辑:</p>
+<h1 id="二-Markdown工具"><a href="#二-Markdown工具" class="headerlink" title="二. Markdown工具"></a>二. Markdown工具</h1><p>有许多的markdown语法转换工具，提供便捷书写和实时预览的功能，帮助方便的编辑文档，个人推荐以下，可在线编辑:</p>
 <ul>
 <li><a href="http://mdp.tylingsoft.com" target="_blank" rel="noopener">Markdown plus</a>: Markdown编辑器，可以支持添加任务列表、emoji、流程图等</li>
 <li><a href="http://mdp.tylingsoft.com" target="_blank" rel="noopener">作业部落</a>: 在线 Markdown 编辑器推出桌面版客户端啦，全平台支援。</li>
@@ -465,7 +465,7 @@ ___
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Markdown语法"><span class="toc-number">1.</span> <span class="toc-text">1. Markdown语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML兼容"><span class="toc-number">1.1.</span> <span class="toc-text">HTML兼容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特殊字符的自动转化"><span class="toc-number">1.2.</span> <span class="toc-text">特殊字符的自动转化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#段落"><span class="toc-number">1.3.</span> <span class="toc-text">段落</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标题"><span class="toc-number">1.4.</span> <span class="toc-text">标题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区块引用"><span class="toc-number">1.5.</span> <span class="toc-text">区块引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#列表"><span class="toc-number">1.6.</span> <span class="toc-text">列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码区块"><span class="toc-number">1.7.</span> <span class="toc-text">代码区块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分割线"><span class="toc-number">1.8.</span> <span class="toc-text">分割线</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#效果如下："><span class="toc-number">2.</span> <span class="toc-text">效果如下：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#插入链接"><span class="toc-number">2.1.</span> <span class="toc-text">插入链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插入图像"><span class="toc-number">2.2.</span> <span class="toc-text">插入图像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字体"><span class="toc-number">2.3.</span> <span class="toc-text">字体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表格"><span class="toc-number">2.4.</span> <span class="toc-text">表格</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Markdown工具"><span class="toc-number">3.</span> <span class="toc-text">2. Markdown工具</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一-Markdown语法"><span class="toc-number">1.</span> <span class="toc-text">一. Markdown语法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML兼容"><span class="toc-number">1.1.</span> <span class="toc-text">HTML兼容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特殊字符的自动转化"><span class="toc-number">1.2.</span> <span class="toc-text">特殊字符的自动转化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#段落"><span class="toc-number">1.3.</span> <span class="toc-text">段落</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#标题"><span class="toc-number">1.4.</span> <span class="toc-text">标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#区块引用"><span class="toc-number">1.5.</span> <span class="toc-text">区块引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#列表"><span class="toc-number">1.6.</span> <span class="toc-text">列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码区块"><span class="toc-number">1.7.</span> <span class="toc-text">代码区块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分割线"><span class="toc-number">1.8.</span> <span class="toc-text">分割线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#效果如下："><span class="toc-number">1.9.</span> <span class="toc-text">效果如下：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入链接"><span class="toc-number">1.10.</span> <span class="toc-text">插入链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入图像"><span class="toc-number">1.11.</span> <span class="toc-text">插入图像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字体"><span class="toc-number">1.12.</span> <span class="toc-text">字体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表格"><span class="toc-number">1.13.</span> <span class="toc-text">表格</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二-Markdown工具"><span class="toc-number">2.</span> <span class="toc-text">二. Markdown工具</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -592,6 +592,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -645,10 +649,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
