@@ -8,18 +8,26 @@
   <link rel="dns-prefetch" href="http://blueskyawen.com">
   <title>Angular-聊聊angular的编译机制 | bluesky个人小站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="初涉前端，懵懂无知，且行且进">
+  <meta name="description" content="Angular应用主要由组件及其HTML模板组成，而且一般基于TypeScript编写，这些都是浏览器不能直接理解的。所以，angular应用都要进行编译后才能运行，不管是TypeScript语言，还是自带的组件、指令、管道等特性，最后都要编译成浏览器可识别的ES5代码才可正常运行。">
 <meta name="keywords" content="angular">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Angular-聊聊angular的编译机制">
 <meta property="og:url" content="http://blueskyawen.com/2019/09/18/angular-see-complie-jit-and-aot/index.html">
 <meta property="og:site_name" content="bluesky个人小站">
-<meta property="og:description" content="初涉前端，懵懂无知，且行且进">
+<meta property="og:description" content="Angular应用主要由组件及其HTML模板组成，而且一般基于TypeScript编写，这些都是浏览器不能直接理解的。所以，angular应用都要进行编译后才能运行，不管是TypeScript语言，还是自带的组件、指令、管道等特性，最后都要编译成浏览器可识别的ES5代码才可正常运行。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-13T15:59:48.145Z">
+<meta property="og:image" content="http://blueskyawen.com/images/run-webpack-bundle-analyzer.jpg">
+<meta property="og:image" content="http://blueskyawen.com/images/ng-build-stats.jpg">
+<meta property="og:image" content="http://blueskyawen.com/images/ng-build-childjs.jpg">
+<meta property="og:image" content="http://blueskyawen.com/images/ng-build-aot-stats.jpg">
+<meta property="og:image" content="http://blueskyawen.com/images/ng-build-aot-childjs.jpg">
+<meta property="og:image" content="http://blueskyawen.com/images/angular-ngc-01.png">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7528743-93b5f8718e9df593.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2020-01-14T15:28:06.255Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Angular-聊聊angular的编译机制">
-<meta name="twitter:description" content="初涉前端，懵懂无知，且行且进">
+<meta name="twitter:description" content="Angular应用主要由组件及其HTML模板组成，而且一般基于TypeScript编写，这些都是浏览器不能直接理解的。所以，angular应用都要进行编译后才能运行，不管是TypeScript语言，还是自带的组件、指令、管道等特性，最后都要编译成浏览器可识别的ES5代码才可正常运行。">
+<meta name="twitter:image" content="http://blueskyawen.com/images/run-webpack-bundle-analyzer.jpg">
   
     <link rel="alternative" href="/atom.xml" title="bluesky个人小站" type="application/atom+xml">
   
@@ -187,7 +195,55 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>Angular应用主要由组件及其HTML模板组成，而且一般基于TypeScript编写，这些都是浏览器不能直接理解的。所以，angular应用都要进行编译后才能运行，不管是TypeScript语言，还是自带的组件、指令、管道等特性，最后都要编译成浏览器可识别的ES5代码才可正常运行。<br><a id="more"></a></p>
+<h1 id="编译方式"><a href="#编译方式" class="headerlink" title="编译方式"></a>编译方式</h1><p>Angular 提供了两种方式来编译你的应用：<strong>即时编译(JIT)和预先(AOT)编译</strong>,官网最两个编译方式的解释为，</p>
+<ul>
+<li>即时编译 (JIT)，默认选项，它会在运行期间在浏览器中编译你的应用，ng build和ng serve是JiT的编译方式</li>
+<li>预先（AOT）编译，它会在构建时编译你的应用，ng build –aot 或者ng serve –aot是Aot的编译方式</li>
+</ul>
+<p>事实上，ng build –prod也会使用Aot编译方式，知识后续还进行压缩、Tree-Shaking等其他操作。<br>两种编译方式的主要区别在于编译时机的不同，还有什么区别呢？可以编译项目看看目标代码的不同</p>
+<h2 id="编译bundle文件"><a href="#编译bundle文件" class="headerlink" title="编译bundle文件"></a>编译bundle文件</h2><p>本节示例demo源码在：<a href="https://github.com/blueskyawen/angular-pwa" target="_blank" rel="noopener">angular-pwa</a>，我们观察src/app/child.component.ts组件在两种编译方式下的不同，代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;AfterContentInit,AfterViewInit,ChangeDetectionStrategy,</span><br><span class="line">ChangeDetectorRef,Component,DoCheck,Input,OnChanges,OnInit,</span><br><span class="line">SimpleChanges&#125; <span class="keyword">from</span> <span class="string">'@angular/core'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;ParentComponent&#125; <span class="keyword">from</span> <span class="string">'./parent.component'</span>;</span><br><span class="line"></span><br><span class="line">@Component(&#123;</span><br><span class="line">    selector: <span class="string">'app-child'</span>,</span><br><span class="line">    template: <span class="string">`</span></span><br><span class="line"><span class="string">        &lt;h1 (click)="addCount()"&gt;Child: &#123;&#123;name&#125;&#125;&lt;/h1&gt;</span></span><br><span class="line"><span class="string">        &lt;h5&gt;Title: &#123;&#123;name + ' 555'&#125;&#125;&lt;/h5&gt;</span></span><br><span class="line"><span class="string">        &lt;p&gt;Today: &#123;&#123;getDate() | date&#125;&#125;&lt;/p&gt;</span></span><br><span class="line"><span class="string">        &lt;p&gt;Counter: &#123;&#123;counter&#125;&#125;&lt;/p&gt;</span></span><br><span class="line"><span class="string">    `</span>,</span><br><span class="line">    changeDetection: ChangeDetectionStrategy.OnPush</span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">ChildComponent</span> <span class="title">implements</span> <span class="title">OnInit</span>, <span class="title">OnChanges</span>, <span class="title">DoCheck</span>, <span class="title">AfterContentInit</span>, <span class="title">AfterViewInit</span> </span>&#123;</span><br><span class="line">    @Input() name = <span class="string">''</span>;</span><br><span class="line">    counter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">constructor</span>(private parentComponent: ParentComponent,</span><br><span class="line">                public cdr: ChangeDetectorRef) &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ngOnInit(): <span class="keyword">void</span> &#123;</span><br><span class="line">        <span class="comment">// this.parentComponent.title = 'angular next!';</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'child-----OnInit'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ngOnChanges(changes: SimpleChanges): <span class="keyword">void</span> &#123;</span><br><span class="line">        <span class="comment">// this.parentComponent.title = 'angular next!';</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'child-----OnChanges'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ngDoCheck(): <span class="keyword">void</span> &#123;</span><br><span class="line">        <span class="comment">// this.parentComponent.title = 'angular next!';</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'child-----DoCheck'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ngAfterContentInit(): <span class="keyword">void</span> &#123;</span><br><span class="line">        <span class="comment">// this.parentComponent.title = 'angular next!';</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'child-----AfterContentInit'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ngAfterViewInit(): <span class="keyword">void</span> &#123;</span><br><span class="line">        <span class="comment">// this.parentComponent.title = 'angular next!';</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'child-----AfterViewInit'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    getDate() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    addCount() &#123;</span><br><span class="line">        <span class="keyword">this</span>.counter++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>选择bundle分析工具</strong><br>我们选择webpack-bundle-analyzer这个工具为我们提供了交互性的 treemap 来可视化显示webpack打包输出文件的大小，其实还可以用source-map-explorer来分析。<br>安装分析工具：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i webpack-bundle-analyzer --save-dev</span><br></pre></td></tr></table></figure></p>
+<p>修改package.json<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">scripts: &#123;</span><br><span class="line">    <span class="string">"bundle-report"</span>: <span class="string">"ng build --stats-json &amp;&amp; webpack-bundle-analyzer dist/angular-pwa/stats.json"</span>,</span><br><span class="line">    <span class="string">"bundle-report-aot"</span>: <span class="string">"ng build --aot --stats-json &amp;&amp; webpack-bundle-analyzer dist/angular-pwa/stats.json"</span></span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<h3 id="JIT编译"><a href="#JIT编译" class="headerlink" title="JIT编译"></a>JIT编译</h3><p>使用ng build进行JIT编译，并调用webpack-bundle-analyzer生成报告<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run bundle-report</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/run-webpack-bundle-analyzer.jpg" alt="run-webpack-bundle-analyzer"> </p>
+<p>浏览器打开<a href="http://127.0.0.1:8888查看报告" target="_blank" rel="noopener">http://127.0.0.1:8888查看报告</a></p>
+<p><img src="/images/ng-build-stats.jpg" alt="ng-build-stats"></p>
+<p>可以看到，JIT编译后会打包编译器compiler代码，且compiler就占1.18M，这是供以后编译运行应用使用的。<br>再看一下ChildComponent组件的目标代码，在dist/angular-pwa/main.js查找ChildComponent：</p>
+<p><img src="/images/ng-build-childjs.jpg" alt="ng-build-childjs"></p>
+<p>可以看到，JIT编译只是把TypeScript语法编译成了es5，不会编译模板文件，HTML直接以内联的方式放在bundle文件里，甚至保留了Angular的插值、Pipe语法等。</p>
+<h3 id="AOT编译"><a href="#AOT编译" class="headerlink" title="AOT编译"></a>AOT编译</h3><p>使用ng build –aot进行JIT编译，并调用webpack-bundle-analyzer生成报告<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run bundle-report-aot</span><br></pre></td></tr></table></figure></p>
+<p>浏览器打开<a href="http://127.0.0.1:8888查看报告" target="_blank" rel="noopener">http://127.0.0.1:8888查看报告</a></p>
+<p><img src="/images/ng-build-aot-stats.jpg" alt="ng-build-aot-stats"></p>
+<p>可以看到，AOT编译后不会打包编译器compiler代码，bundle体积明显小了很多，可以直接运行。<br>再看一下ChildComponent组件的目标代码，在dist/angular-pwa/main.js查找ChildComponent：</p>
+<p><img src="/images/ng-build-aot-childjs.jpg" alt="ng-build-aot-stats"></p>
+<p>可以看到，AOT编译会编译TypeScript语法和angular模板文件、组件特性，并生成了多个factory.js文件。</p>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>从上面的描述我们可以看到两者的区别，主要体现在编译步骤上，<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JiT编译</span></span><br><span class="line">-&gt; tsc编译Angular项目</span><br><span class="line">-&gt; 打包</span><br><span class="line">-&gt; Minification</span><br><span class="line">   ...</span><br><span class="line">   </span><br><span class="line"><span class="comment">// AoT编译</span></span><br><span class="line">-&gt; 编译Angular项目</span><br><span class="line">   -&gt; 把模板和component编译成TypeScript/es6（ngc）</span><br><span class="line">   -&gt; 把TypeScript编译成es5 (tsc)</span><br><span class="line">-&gt; 打包</span><br><span class="line">-&gt; Minification</span><br><span class="line">   ...</span><br></pre></td></tr></table></figure></p>
+<p>与AOT相比，JIT的区别在于“编译”的缺失，所以它需要打包编译器供运行平台下载，在运行时需要先执行编译。<br>两者的主要不同如下：</p>
+<ul>
+<li>编译打包文件体积不一样：JIT会携带编译器源码，体积大，而AOT不需要</li>
+<li>ngc编译器的执行时间不一样：JIT在运行时在浏览器中执行，而AOT在编译构建时就已经完成编译</li>
+<li>打包bundle文件内容不一样：JIT编译只是把TypeScript语法编译成了es5，不会编译模板文件，HTML直接以内联的方式放在bundle文件；而AOT会编译TypeScript语法和angular模板文件、组件特性成为可运行代码</li>
+</ul>
+<h1 id="ngc编译"><a href="#ngc编译" class="headerlink" title="ngc编译"></a>ngc编译</h1><p>从上面看到，AOT编译其实有两个步骤：</p>
+<ul>
+<li>把模板和component编译成TypeScript/es6（ngc）</li>
+<li>把TypeScript编译成es5 (tsc)</li>
+</ul>
+<p>整个编译下来，最后生成了可运行的ES5代码，并进行了打包合并。那怎么能看到模板和component编译后代码呢？<br>可以使用ngc编译，至于为什么需要这个命令，主要是因为编译出来的代码与源代码目录结构都能对应的上，方便查看分析，还是以示例demo为例，设置如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改package.json</span></span><br><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">"complier"</span>: <span class="string">"ngc"</span></span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在项目目录下执行命令</span></span><br><span class="line">&gt; npm run complier</span><br><span class="line"></span><br><span class="line"><span class="comment">// 目标文件输出目录在tsconfig.json</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="string">"baseUrl"</span>: <span class="string">"./"</span>,</span><br><span class="line">    <span class="string">"outDir"</span>: <span class="string">"./dist/out-tsc"</span>,</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>执行后代码如下：</p>
+<p><img src="/images/angular-ngc-01.png" alt="ng-build-aot-stats"></p>
+<p>可以看到，ngc编译的输出文件目录结构和真正的项目目录结构一样，只是每个component会多几个文件，还是child.component.ts为例，编译出来的文件有好几个</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7528743-93b5f8718e9df593.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="ngc-child-component.png"></p>
+<p>其中：</p>
+<ul>
+<li>child.component.metadata.json，记录ts文件的decorator信息和constructor的依赖注入信息。下次在二次编译的时候不需要再从.ts文件里拿了。二次编译是指在自己项目中引用第三方库，在编译自己项目的时候需要对第三方库进行二次编译打包。如果我们自己项目要用AoT编译，那么第三方库必须要提供.metadata.json文件。</li>
+<li>child.component.ngsummary.json，内容与metadata.json类似，但会多一点</li>
+<li>child.component.js，记录ts文件里除decorator和constructor之外的内容，编译成了es6代码</li>
+<li>child.component.ngfactory.js，记录了创建组件、渲染组件(涉及DOM操作)、执行变化检测(获取oldValue和newValue对比)、销毁组件的代码，也就是上面所说的component view，可以在上面的图里右边代码看到ChildComponent已经编译好了。</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>Angular提供了几种不同的编译方式，但是不管是何种方式，最后编译出来运行的文件基本是类似的，只是编译时间的不同。<br>在项目中最好能够采用AOT或prod预编译方式，这样不需要打包编译器，体积能小很多，而且可以直接运行，在性能上是明显好很多的。同时，AOT编译也可以把模板文件先打包成es6或ts文件，可以做Tree Shaking，进一步减小bundle文件的体积。</p>
+
       
 
       
@@ -350,7 +406,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#编译方式"><span class="toc-number">1.</span> <span class="toc-text">编译方式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#编译bundle文件"><span class="toc-number">1.1.</span> <span class="toc-text">编译bundle文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JIT编译"><span class="toc-number">1.1.1.</span> <span class="toc-text">JIT编译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AOT编译"><span class="toc-number">1.1.2.</span> <span class="toc-text">AOT编译</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#区别"><span class="toc-number">1.2.</span> <span class="toc-text">区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ngc编译"><span class="toc-number">2.</span> <span class="toc-text">ngc编译</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -473,15 +529,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">写作</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -509,11 +565,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Jqury</a>
+                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
+                <a href="javascript:void(0)" class="js-tag color1">Jqury</a>
               </li>
              
               <li class="article-tag-list-item">
